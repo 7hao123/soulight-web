@@ -117,3 +117,7 @@
   align-self: flex-start;
   color: blueviolet;
 }
+hr {
+  margin: 32px;
+  color: #fff ;
+}

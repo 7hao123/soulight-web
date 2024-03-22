@@ -85,9 +85,11 @@ const App: React.FC = () => {
             <Breadcrumb.Item>All Advisors</Breadcrumb.Item>
           </Breadcrumb>
           <GuideLIst message={message}/>
+          <hr />
           <GuideLIst message={message}/>
+          <hr />
           <GuideLIst message={message}/>
-        
+          
         </div>
       </Content>
       <Footer className="Footer">
