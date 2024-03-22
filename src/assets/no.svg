@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <g fill="none" fill-rule="evenodd">
+        <g stroke="#A59BB2" stroke-width="2">
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <g>
+                                        <g transform="translate(-911.000000, -468.000000) translate(378.000000, 311.000000) translate(2.000000, 156.000000) translate(244.000000, 0.000000) translate(286.000000, 0.000000) translate(0.650000, 0.200000) translate(0.350000, 0.800000)">
+                                            <circle cx="16" cy="16" r="15"/>
+                                            <g transform="translate(8.000000, 9.000000)">
+                                                <ellipse cx="8.177" cy="10.126" rx="5.217" ry="5.347"/>
+                                                <path stroke-linecap="round" d="M1.434 1.164L4.486 5.079M.579 4.627L1.153.738 5.182 1.235M14.148.114L11.058 5.183M10.087 1.144L14.854 4.28"/>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

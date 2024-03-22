@@ -1,0 +1,8 @@
+.block {
+    color: #fff;
+    height: 16px;
+    
+    width:32px;
+    background:orange;
+    border-radius:4px
+}

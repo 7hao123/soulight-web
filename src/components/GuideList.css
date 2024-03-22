@@ -1,0 +1,37 @@
+.box {
+  display: flex;
+  justify-content: space-between;
+  /* width: 100%; */
+  color: purple;
+}
+.introduce {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  align-items: flex-start;
+  
+ 
+}
+
+.introduce p :nth-child(1){
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.introduce p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+
+.under{
+    text-decoration: line-through;
+    color: #999;
+}
+
+.order{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
