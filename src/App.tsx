@@ -10,6 +10,7 @@ import tikok from "./assets/home_fb.png";
 import facebook from "./assets/home_fb.png";
 import GuideLIst from './components/GuideList'
 import "./App.css";
+import MyPagination from "./components/MyPagination/MyPagination";
 
 // const items = new Array(15).fill(null).map((_, index) => ({
 //   key: index + 1,
@@ -89,7 +90,7 @@ const App: React.FC = () => {
           <GuideLIst message={message}/>
           <hr />
           <GuideLIst message={message}/>
-          
+          <MyPagination/>
         </div>
       </Content>
       <Footer className="Footer">
