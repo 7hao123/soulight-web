@@ -1,47 +1,62 @@
-import  { useState } from 'react';  
+import    React,{ useState } from 'react';  
 import { Pagination, Button } from 'antd'; 
 import type {PaginationProps}  from 'antd'
+import { VerticalLeftOutlined,VerticalRightOutlined,LeftOutlined,RightOutlined } from '@ant-design/icons';
 // {currentPage,totalPages,setPage}
+import './MyPagination.css'
 export default function MyPagination(){
-    const TotalCount = 500; // 假设总条目数为500  
-const PageSize = 10; // 每页显示10条  
-  
-const [current, setCurrent] = useState(1); // 当前页码  
-  
-  const goToFirstPage = () => {  
-    setCurrent(1);  
-  };  
-  
-  const goToLastPage = () => {  
-    const totalPages = Math.ceil(TotalCount / PageSize);  
-    setCurrent(totalPages);  
-  };  
-  
-  const onChange = (page) => {  
-    setCurrent(page);  
-  };  
-  const itemRender: PaginationProps['itemRender'] = (_, type, originalElement) => {
-    
-    
-    if (type === 'prev') {
-      return <a>Previous</a>;
-    }
-    if (type === 'next') {
-      return <a>Next</a>;
-    }
-    return originalElement;
-  };
-    return  (
-        <div>  
-      <Button onClick={goToFirstPage}>跳转到首页</Button>  
-      <Button onClick={goToLastPage}>跳转到尾页</Button>  
-      <Pagination  
-        current={current}  
-        pageSize={PageSize}  
-        total={TotalCount}  
-        onChange={onChange}  
+    const [current, setCurrent] = React.useState<number>(3);
+    const onChange: PaginationProps["onChange"] = (page) => {
+      setCurrent(page);
+    };
+    const itemRender: PaginationProps["itemRender"] = (
+      _,
+      type,
+      originalElement
+    ) => {
+      if (type === "prev") {
+        return (
+          <div>
+            <button className='btn'
+              disabled={current === 1}
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrent(1);
+              }}
+            >
+              <VerticalRightOutlined className='icon'/>
+            </button>
+            <button className='btn' disabled={current === 1}><LeftOutlined   className='icon'/></button>
+          </div>
+        );
+      }
+      if (type === "next") {
+        return (
+          <div className='box'>
+            <button className='btn' disabled={current === 500}><RightOutlined className='icon'/></button>
+            <button className='btn'
+              disabled={current === 500}
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrent(500);
+              }}
+            >
+              <VerticalLeftOutlined className='icon'/>
+            </button>
+          </div>
+        );
+      }
+      return originalElement;
+    };
+    return (
+      <Pagination  className='pag'
+        total={5}
+        current={current}
+        onChange={onChange}
         itemRender={itemRender}
-      />  
-    </div> 
-      )
+        defaultPageSize={3}
+        showSizeChanger={false}
+      />
+    );
+  
 }

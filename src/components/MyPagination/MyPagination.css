@@ -1,0 +1,41 @@
+.btn {
+    height: 32px;
+    width: 32px  ;
+    margin-inline-end: 8px;
+    border-radius: 32px;
+    background-color: #fff;
+}
+
+.btn:hover {
+    background-color: blueviolet;
+    border-color: blueviolet !important;
+}
+.btn .active {
+    border-color: blueviolet;
+}
+
+.icon svg{
+    margin-left: -7px;
+}
+.pag  .ant-pagination-item-active{
+    
+    background-color: blueviolet;
+    border-color:blueviolet ;
+}
+
+.pag .ant-pagination-item {
+    color: #fff;
+    border-radius: 32px;
+}
+
+.pag .ant-pagination-item:hover {
+    background-color: blueviolet !important;
+    border-color:blueviolet ;
+}
+
+.pag .ant-pagination-item-link-icon {
+    color:blueviolet  !important;
+}
+
+
+
