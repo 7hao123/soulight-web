@@ -1,0 +1,33 @@
+.order-info h2{
+    color: #23173e;
+}
+
+.order-info span{
+    color: #9d9d9d;
+    font-weight: 600;
+}
+
+.order-condition{
+    margin-top: 6px;
+}
+.order-condition span:nth-child(1){
+    color: #0094f8;
+}
+
+.circle-img{
+    border-radius: 50%;
+    height: 70px;
+    margin-right: 8px;
+}
+
+.order-item{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.time{
+    margin-top: 20px;
+    color: #aaaaaa;
+    font-weight: 600;
+}

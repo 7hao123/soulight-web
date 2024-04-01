@@ -1,0 +1,215 @@
+.order-detail{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.order-detail-left{
+
+}
+
+.order-message{
+    width: 500px;
+    /* height: 120px; */
+    background: #f2f1f5;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+.order-title span{
+    font-weight: 600;
+    color: #9d9d9d;
+}
+
+.order-title span:nth-child(1){
+    color: #0094f8;
+}
+
+.dashed {
+    border-bottom: 1px dashed #d6d4e4;
+    width: 100%;
+    margin:16px 0 8px 0;
+}
+
+.time-color{
+    color: rgb(39,23,72);
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+.message-color{
+    color: #9c9c9c;
+    font-weight: 450;
+    margin-top: 8px;
+}
+
+.request-detail{
+    width: 500px;
+    /* height: 120px; */
+    
+    padding: 10px;
+}
+
+.request-detail h2{
+    color: rgb(39,23,72);
+}
+
+.situation{
+    padding: 10px;
+    margin-top: 24px;
+}
+
+.situation p {
+    color: #9c9c9c;
+    width: 100%;
+    margin-top: 24px;
+    font-weight: 600;
+}
+
+.xiala2 .flex-between span:nth-child(1){
+    color: rgb(39,23,72);
+    font-weight: bold;
+}
+
+.request-color {
+    color: #9c9c9c;
+    font-weight: 600;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.pic {
+    margin-top: 20px;
+    height: 80px;
+}
+
+
+.order-detail-right{
+    
+    border: 1px dashed #f1e2fd;
+    padding: 24px 32px 32px 32px;
+    border-radius: 16px;
+    margin-bottom: 80px;
+}
+
+.order-info h2 {
+    color: rgb(39,23,72);
+}
+.new-introduce{
+    color: #9c9c9c;
+    font-weight: 600;
+}
+
+
+.circle-img{
+    border-radius: 50%;
+    height: 70px;
+    margin-right: 8px;
+}
+
+.rate-color{
+    color:#7d3b8d;
+    font-weight:700;
+    font-size:16px;
+}
+
+.rate-content-color{
+    color:#8e8e8e;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.triangle{
+    width: 370px;
+    height: 65px;
+    border-radius: 6px;
+    
+    background: #fff;
+    box-shadow: 
+    0px 0px 4px 2px #e8eef5 ;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 20px;
+    align-items:center
+}
+
+.triangle span{
+    color: #3d2488;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.triangle p{
+    color: #876eb6;
+    font-weight: 500;
+}
+
+
+.flex1{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px;
+    align-items:center
+}
+
+.dollar{
+    width: 105px;
+    height: 32px;
+    background: linear-gradient(to right, rgb(129, 65, 146), rgb(99, 82, 183));
+    color: #fff;
+    font-weight: bold;
+    line-height: 10px;
+    border-radius: 6px;
+}
+
+.dollar-grey{
+   background: #929292;
+   width: 105px;
+   height: 32px;
+  
+   color: #fff;
+   font-weight: bold;
+   line-height: 10px;
+   border-radius: 6px;
+}
+
+
+.note {
+    width: 280px;
+    height: 140px;
+    box-shadow: 
+    0px 0px 4px 2px rgba(0,0,255,.2) ;
+    box-shadow: 0 0 4px 2px #e8eef5;
+    border-radius: 6px;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.note div{
+    background-image: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183));  
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 20px;
+    font-style: italic;
+    margin: 48px 0 8px 0;
+}
+
+.note button {
+    width: 180px;
+
+    height: 45px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 17px;
+    background: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183));
+}

@@ -1,11 +1,20 @@
-import    React,{ useState } from 'react';  
-import { Pagination, Button } from 'antd'; 
+import    React from 'react';  
+import {  Pagination } from 'antd'; 
 import type {PaginationProps}  from 'antd'
 import { VerticalLeftOutlined,VerticalRightOutlined,LeftOutlined,RightOutlined } from '@ant-design/icons';
 // {currentPage,totalPages,setPage}
 import './MyPagination.css'
-export default function MyPagination(){
-    const [current, setCurrent] = React.useState<number>(3);
+// interface PagProps{
+//     total:number,
+//     defaultPageSize :number,
+//     currentPage:number
+//     setCurrentPage:any
+// }
+
+
+
+export default function MyPagination({total,defaultPageSize,current,setCurrent}:any){
+    // const [current, setCurrent] = React.useState<number>(1);
     const onChange: PaginationProps["onChange"] = (page) => {
       setCurrent(page);
     };
@@ -33,12 +42,12 @@ export default function MyPagination(){
       if (type === "next") {
         return (
           <div className='box'>
-            <button className='btn' disabled={current === 500}><RightOutlined className='icon'/></button>
+            <button className='btn' disabled={current === (total/defaultPageSize + 1)}><RightOutlined className='icon'/></button>
             <button className='btn'
-              disabled={current === 500}
+              disabled={current === (total/defaultPageSize + 1)}
               onClick={(e) => {
                 e.stopPropagation();
-                setCurrent(500);
+                setCurrent((total/defaultPageSize + 1));
               }}
             >
               <VerticalLeftOutlined className='icon'/>
@@ -48,15 +57,19 @@ export default function MyPagination(){
       }
       return originalElement;
     };
-    return (
-      <Pagination  className='pag'
-        total={5}
-        current={current}
-        onChange={onChange}
-        itemRender={itemRender}
-        defaultPageSize={3}
-        showSizeChanger={false}
-      />
+    return (<>
+    
+
+<Pagination  className='pag'
+  total={total}
+  current={current}
+  onChange={onChange}
+  itemRender={itemRender}
+  defaultPageSize={defaultPageSize}
+  showSizeChanger={false}
+/>
+    </>
+   
     );
   
 }

@@ -1,32 +1,47 @@
 import "./GuideList.css";
 import { Rate, Flex, Button } from "antd";
-import RateList from "./RateList";
-import SaleBlock from "./SaleBlock";
+import RateList from "../RateList/RateList";
+import SaleBlock from "../SaleBlock/SaleBlock";
 import { MessageOutlined } from "@ant-design/icons";
-import img1 from '../assets/dog.webp'
+import img1 from '../../assets/woman.webp'
+
 export default function GuideList({ message }: any) {
   const style1 = {
-    borderColor: "purple",
+    borderColor: "#3c2488",
     marginLeft: "12px",
-    color: "purple",
+    color: "#3c2488",
     padding:'0 2em',
-    borderRadius:'4px'
+    borderRadius:'4px',
+    width:'160px',
+    height:'45px',
+    fontSize:'16px',
+    fontWeight:'bold'
   };
 
   const style2 = {
-    background: "purple",
+    background: "linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183))",
     marginLeft: "12px",
     color: "white",
     padding:'0 2.2em',
-    borderRadius:'4px'
+    borderRadius:'4px',
+    
+    width:'160px',
+    height:'45px',
+    fontSize:'16px',
+    fontWeight:'bold'
   };
+  function Routerto(a){
+    console.log(a);
+    // <Link to={``}></Link>
+    
+  }
   return (
     <div className="box">
         <Flex>
-        <img height={'140px'} src={img1} alt="" />
+        <img height={'160px'} src={img1} alt="" />
       <div className="introduce">
        
-        <h2>{message.name}</h2>
+        <h2><a onClick={Routerto(message)}>{message.name}</a></h2>
         <p>{message.character}</p>
         <p>{message.information}</p>
       </div>
@@ -35,7 +50,7 @@ export default function GuideList({ message }: any) {
       <Flex gap="small" vertical align="start" className="rate">
         <Flex vertical align="start">
           <Flex gap="small">
-            <span style={{ fontWeight: "700", color: "purple" }}>
+            <span style={{ fontWeight: "700", color: "#76429a" ,fontSize:'16px' }}>
               {message.score}
             </span>
             <Rate disabled defaultValue={message.score} />
@@ -46,13 +61,17 @@ export default function GuideList({ message }: any) {
         <RateList num={message.readings} content={"SERVICES"} />
       </Flex>
 
-      <div className="order">
+      <Flex vertical gap='small' justify="center">
         
           <Flex gap='middle'>
             <Button size="middle" style={style2}>Get Reading</Button>
             <div>
-              <span>{message.readingPrice}/reading</span>
-              <Flex style={{fontSize:'11px'}} gap='small'>
+              <span
+              style={{color:'#3d2588',fontSize:'15px'}}
+              >{message.readingPrice}<span
+              style={{color:'#3c2488',fontSize:'13px'}}
+              >/reading</span></span>
+              <Flex style={{fontSize:'11px',fontWeight:'bold'}} gap='small'>
                 <span className="under">{message.oldReadingPrice}</span>
                 <SaleBlock />
               </Flex>
@@ -61,8 +80,12 @@ export default function GuideList({ message }: any) {
           <Flex gap='middle'>
             <Button size="middle" style={style1} icon={<MessageOutlined />}>Chat now</Button>
             <div>
-            <span>{message.minPrice}/min</span>
-            <Flex style={{fontSize:'11px'}} gap='small'>
+            <span
+            style={{color:'#3d2588',fontSize:'15px'}}
+            >{message.minPrice}<span
+            style={{color:'#3c2488',fontSize:'13px'}}
+            >/min</span></span>
+            <Flex style={{fontSize:'11px',fontWeight:'bold'}} gap='small'>
               <span className="under">{message.oldReadingPrice}</span>
               <SaleBlock />
             </Flex>
@@ -71,7 +94,7 @@ export default function GuideList({ message }: any) {
           </Flex>
          
         
-      </div>
+      </Flex>
     </div>
   );
 }

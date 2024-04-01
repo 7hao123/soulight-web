@@ -1,0 +1,116 @@
+.tabs{
+    display: flex;
+    width: 80%;
+    border-bottom:2px solid rgb(231, 222, 253)  ;
+    margin-bottom: 36px;
+    margin-top: 36px;
+    height: 51px;
+}
+
+.tab-item1{
+    height: 50px;
+    padding: 0 30px;
+    text-align: center;
+    line-height: 50px;
+    background: linear-gradient(to right, rgb(129, 65, 146), rgb(99, 82, 183));
+    font-size: 20px;
+    color: #fff;
+    font-weight: 800;
+}
+
+
+.tab-item2{
+    text-align: center;
+    line-height: 50px;
+    border: none;
+    font-size: 20px;
+    font-weight: 800;
+    color: rgb(39, 23, 72);
+    padding-left: 30px;
+}
+
+.form {
+    background-color: rgb(250, 251, 253);
+    height: 600px;
+    width: 80%;
+    margin-bottom: 60px;
+    padding-top: 60px;
+    padding-left: 30px;
+}
+
+.country {
+    height: 50px;
+    width: 120px;
+    padding: 7px 11px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 8px;
+    background: #ffffff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d9d9d9;
+}
+
+
+.form-item{
+    width: 500px;
+    height: 50px;
+}
+
+
+
+.labelcss {
+    color: rgb(39, 23, 72);
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+
+.submit {
+    width: 500px;
+    height: 60px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius:6px ;
+    background: linear-gradient(to right,rgb(138, 76, 153),rgb(100, 82, 183));
+}
+
+.ant-input::placeholder{
+    color: rgb(143, 143, 143);
+    font-weight: bold;
+}
+
+.form  .ant-picker-input  input::placeholder{
+    color: rgb(143, 143, 143);
+    font-weight: bold;
+    
+}
+
+.ant-picker .ant-picker-suffix{
+    color: rgb(129, 65, 145);
+}
+
+.radio-box{
+    position: relative;
+}
+
+.gender-radio1{
+    opacity: 0;
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    left:0;
+}
+
+.gender-radio1:checked + .radio-color label{
+    color: red;
+}
+
+.gender-radio2{
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    left:70px;
+    opacity:0;
+}

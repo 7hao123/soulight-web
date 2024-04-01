@@ -14,8 +14,8 @@
 }
 
 a {
-  font-weight: 500;
-  color: purple;
+  font-weight: 650;
+  color: rgb(39, 23, 72);
   text-decoration: inherit;
 }
 a:hover {
@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  /* color: rgb(39,23.72); */
 }
 
 h1 {
@@ -59,7 +60,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: blueviolet;
 }
 button:focus,
 button:focus-visible {

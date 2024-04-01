@@ -1,0 +1,5 @@
+.bgc{
+    background-image: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183));  
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;
+}

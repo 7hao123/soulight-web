@@ -3,23 +3,31 @@
   justify-content: space-between;
   /* width: 100%; */
   margin-bottom: 32px;
-  color: purple;
+  color: rgb(39,23,72);
+  font-weight: 600;
 }
 .introduce {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 450px;
   align-items: flex-start;
-  
+  margin-left: 10px;
  
+}
+
+.rate{
+  margin-top: 16px;
 }
 
 .introduce p :nth-child(1){
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
+  
 }
 .introduce p {
+  margin:4px 0;
+  font-size: 16px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;

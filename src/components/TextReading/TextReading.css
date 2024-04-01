@@ -1,0 +1,215 @@
+.order-main{
+    width: 80%;
+ 
+}
+
+.text-reading-main{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.text-reading-title{
+    color: #3c2488;
+    text-align: start;
+    width: 80%;
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.paste {
+    border-radius: 8px;
+    height: 70px;
+    width: 500px;
+    border: 1px dashed rgb(100, 73, 160);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    margin-bottom: 24px;
+}
+
+.paste-icon {
+    height: 14px;
+    margin-right: 8px;
+    /* color: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183)); */
+}
+
+.font1{
+    font-weight: bold;
+    background-image: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183));  
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;
+    /* color: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183)); */
+    font-size: 16px;
+}
+
+.ewew{
+    font-size: 16px;
+    font-weight: bold;
+    color: #8e8e8e;
+}
+
+.btn-grey{
+    background:  #8f8f8f;
+    color: #fff;
+    width: 240px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.btn-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.span-promo{
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(39,23,72);
+    margin-bottom: 12px;
+}
+
+.promo-code-box {
+    /* height: 100px; */
+    background-color: #fbf7fe;
+    padding: 32px;
+    border-radius: 6px;
+}
+
+.btn-apply{
+    color: #fff;
+    font-weight: bold;
+    border-radius:6px ;
+    padding: 0.7em 2.3em;
+    font-size: 18px;
+    background: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183));
+}
+
+
+
+.small-info h2{
+    color: #23173e;
+    font-weight: bold;
+
+}
+
+.small-info p{
+    color: rgb(39,23,72);
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.big-info{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border: 2px solid #e6dffd;
+    border-radius: 6px;
+}
+
+.info-box{
+    
+   
+    padding: 16px 16px  0 16px; 
+
+}
+
+
+.drop-shadow {
+    display: inline-block;
+    position: relative;
+    width: 520px;
+    border-radius: 6px;
+    background: #e6dffd;
+    margin-top: 8px;
+    padding: 16px 32px 16px 16px ;
+    font-size: 15px;
+    font-weight: bold;
+    color: #23173e;
+}
+ 
+.drop-shadow::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 10px solid  transparent;
+    border-bottom-color: #e6dffd;
+    top: -20px;
+    left: 45px;
+}
+
+
+.soulight-info{
+    /* font-weight: bold; */
+    font-weight: 500;
+    color: #23173e;
+    margin-left: 48px;
+    font-size: 16px;
+    
+}
+
+.labelcss{
+    color: rgb(39, 23, 72);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+ .ant-picker-input  input::placeholder{
+    /* color: rgb(143, 143, 143); */
+    color: red;
+    font-weight: 600; 
+}
+
+.ant-picker-input {
+    font-weight: 600;
+}
+
+
+
+.ant-picker .ant-picker-suffix{
+    color: rgb(129, 65, 145);
+}
+
+.ant-input::placeholder{
+    color: rgb(143, 143, 143);
+    font-weight: 600;
+}
+
+
+.ant-select-selector .ant-select-selection-item{
+    font-weight: 600;
+    color: #5e5e5e;
+}
+
+.ant-input {
+    font-weight: 600;
+    color: #5e5e5e;
+}
+
+.form-item{
+    width: 500px;
+    height: 50px;
+}
+
+.ant-input-suffix .ant-input-show-count-suffix{
+    font-weight: 600;
+    position: absolute;
+    top:48px  ;
+    right: 0;
+    color: #929292;
+}
+
+.ant-input-suffix .ant-input-data-count{
+    font-weight: 600;
+    color: #929292;
+
+}

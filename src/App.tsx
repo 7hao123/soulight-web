@@ -1,24 +1,54 @@
-import React, { ReactNode } from "react";
-import { Breadcrumb, Layout } from "antd";
+import React, { ReactNode, useState } from "react";
+import {  Layout } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 const { Header, Content, Footer } = Layout;
 import soulightNav from "./assets/soulightNav@3x.png";
-import soulightPsyBg from "./assets/soulightPsyBg@3x.png";
+import MainContent from "./components/MainContent/MainContent";
 import ins from "./assets/icons8-instagram-48 2@3x.png";
 import twiter from "./assets/home_t.png";
-import tikok from "./assets/home_fb.png";
+import tikok from "./assets/home_tictik.svg";
 import facebook from "./assets/home_fb.png";
-import GuideLIst from './components/GuideList'
+import Buttons from "./components/Buttons/Buttons";
+import User from "./components/User/User";
+import AdvisorDetail from './components/AdvisorDetail/AdvisorDetail'
 import "./App.css";
-import MyPagination from "./components/MyPagination/MyPagination";
+import search from './assets/search-copy.svg'
+import MyOrder from './components/MyOrder/MyOrder'
 
 // const items = new Array(15).fill(null).map((_, index) => ({
 //   key: index + 1,
 //   label: `nav ${index + 1}`,
 // }));
 
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider
+}from 'react-router-dom'
+import MyAccount from "./components/MyAccount/MyAccount";
+import TextReading from "./components/TextReading/TextReading";
+import OrderDetail from "./components/OrderDetail/OrderDetail";
+
+const router = createBrowserRouter([
+  {
+    path:'/',
+    element: <MyAccount/>
+  },
+  {
+    path:'/1',
+    element: <MainContent/>
+  }
+  // {
+  //   path:'/:AdvisorId',
+  //   element:<AdvisorDetail/>
+  // }
+])
+
+
+
+
 const items = [
-  { key: "0", label: "Our Psychics" },
+ 
   { key: "1", label: "About Us" },
   { key: "2", label: "Articles" },
   { key: "3", label: "Purchase" },
@@ -26,72 +56,43 @@ const items = [
   { key: "5", label: "Premium Service" },
   { key: "6", label: "Affiliate Program" },
 ];
+const item1 =
+  { key: "0", label: "Our Psychics" }
+
 const listItems: ReactNode[] = items.map((item) => {
   return <li key={item.key}><a href="">{item.label}</a></li>;
 });
 // 信息里面带有😈怎么处理
-const message = {
-  image: "#",
-  name: "Saira Psychics Sara",
-  character: "Life coach Spiritual healer love",
-  information:
-    "As a life coach, Sara is passionate about guiding her clients towards personal growth and inner transformation. " +
-    "She believes that everyone has the ability to overcome obstacles and create a life they love," +
-    "and she uses her expertise to help clients identify their strengths, overcome challenges, and achieve their goals.",
-  score: "5.0",
-  reviews: "3961",
-  readings: "15119",
-  services: "5",
-  readingPrice: "$17.83",
-  oldReadingPrice: "$25.49",
-  minPrice: "$12.49",
-  oldMinPrice: "$24.99",
-};
 
-const style1 = {
-  borderColor: "purple",
-  marginLeft: "12px",
-  color: "purple",
-};
 
-const style2 = {
-  background: "purple",
-  marginLeft: "12px",
-  color: "white",
-};
+
 
 
 const App: React.FC = () => {
+  const [login,setLogin] = useState(false);
   return (
     <Layout className="App">
       <Header className="Header">
         <img height={"100%"} src={soulightNav} alt="" />
-        <ul className="menu">{listItems}</ul>
+        <ul className="menu">
+          <li ><a href="" style={{color:'rgb(125, 60, 142)'}}>{item1.label}</a></li>
+          {listItems}</ul>
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-          <SearchOutlined
-            style={{ margin: "0 24px 0 12px", color: "purple" }}
+          <img src={search}
+            style={{ margin: "8px 24px 0 12px", height:'24px', color: "rgb(67, 42, 140)" }}
           />
-          <button style={style1}>Sign in</button>
-          <button style={style2}>Regsister</button>
-      
+          {
+            login ?   <User/> : <Buttons setLogin={setLogin} login={login}/>
+          }
+        {/* <Buttons/> */}
+        {/* <User/> */}
         </div>
       </Header>
 
       <Content className="Content">
-        <img width={"100%"} src={soulightPsyBg} alt="" />
-
-        <div className="main">
-          <Breadcrumb separator=">" style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>All Advisors</Breadcrumb.Item>
-          </Breadcrumb>
-          <GuideLIst message={message}/>
-          <hr />
-          <GuideLIst message={message}/>
-          <hr />
-          <GuideLIst message={message}/>
-          <MyPagination/>
-        </div>
+          {/* <MainContent/> */}
+          <RouterProvider router={router}/>
+          <Outlet/>
       </Content>
       <Footer className="Footer">
         <div className="footer">
@@ -105,7 +106,7 @@ const App: React.FC = () => {
             >
               <div className="item">
                 <p>Explore Soulight</p>
-
+                <a href="">All Advisors</a>
                 <a href="">Premium Service</a>
                 <a href="">Articles</a>
                 <a href="">Student Discount</a>
@@ -144,7 +145,7 @@ const App: React.FC = () => {
               </div>
               <div className="item">
                 <p>Affiliate Program</p>
-                <p style={{ width: "110px" }}>
+                <p style={{ width: "118px",fontWeight:'550' }}>
                   Influencer?Online Marketer? Let's make every connection
                   valuable.Earn up to $100 from new paying user by promoting us.
                 </p>
@@ -157,9 +158,9 @@ const App: React.FC = () => {
           </div>
           <div className="right">
             <p>Get Soulight Mobile App</p>
-            <div>
-              <img src={ins} alt="" />
-            </div>
+            
+              <img src={ins} height={'80px'} alt="" />
+            
 
             <span>Follow us</span>
             <div className="media">

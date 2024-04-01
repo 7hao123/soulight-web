@@ -1,0 +1,44 @@
+.account{
+    border: 1px solid #884a97;
+    border-left: none;
+    border-right:none ;
+    height: 20px;
+    width: 65px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #884a97;
+    font-weight: bold;
+}
+
+
+.name {
+    line-height: 32px;
+    height: 32px;
+    font-weight: bold;
+    color: #23173e;
+}
+
+.radius-color{
+    height: 20px;
+    width: 20px;
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
+    background: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183));
+    text-align: center;
+    line-height: 18px;
+    border: 1px solid #884a97;
+    border-left:none ;
+    color: #fff;
+}
+
+.radius-no-color{
+    height: 20px;
+    width: 20px;
+    border-top-left-radius: 32px;
+    border-bottom-left-radius: 32px;
+    border: 1px solid #884a97;
+    border-right: none;
+    text-align: center;
+    line-height: 18px;
+    
+}

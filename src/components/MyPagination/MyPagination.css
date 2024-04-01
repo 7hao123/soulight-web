@@ -5,22 +5,33 @@
     border-radius: 32px;
     background-color: #fff;
 }
-
+/* 
 .btn:hover {
     background-color: blueviolet;
     border-color: blueviolet !important;
 }
 .btn .active {
-    border-color: blueviolet;
+    border-color: blueviolet ;
 }
+.btn:focus {
+    outline:4px blueviolet ;
+} */
+
 
 .icon svg{
     margin-left: -7px;
 }
+
+.pag{
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
 .pag  .ant-pagination-item-active{
     
-    background-color: blueviolet;
-    border-color:blueviolet ;
+    background-image: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183));  
+    -webkit-background-clip: text;  
+    -webkit-text-fill-color: transparent;
+    /* border-color:linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183)); */
 }
 
 .pag .ant-pagination-item {
@@ -28,13 +39,31 @@
     border-radius: 32px;
 }
 
-.pag .ant-pagination-item:hover {
-    background-color: blueviolet !important;
-    border-color:blueviolet ;
+.pag .ant-pagination-item a {
+    background: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183));
+    -webkit-background-clip: text;/*将设置的背景颜色限制在文字中*/
+    -webkit-text-fill-color: transparent;/*给文字设置成透明*/
+  
 }
 
-.pag .ant-pagination-item-link-icon {
+.pag .ant-pagination-item:hover {
+    /* background: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183));;
+    background-color: 
+    border-color:linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183)); */
+}
+
+
+
+/* .pag .ant-pagination-item-link-icon {
     color:blueviolet  !important;
+} */
+
+.pag {
+    margin-bottom: 16px;
+}
+
+button:hover{
+    border-color:#fff ;
 }
 
 
