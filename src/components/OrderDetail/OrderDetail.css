@@ -96,7 +96,7 @@
     margin-bottom: 80px;
 }
 
-.order-info h2 {
+.order-info2 h2 {
     color: rgb(39,23,72);
 }
 .new-introduce{
@@ -212,4 +212,9 @@
     font-weight: 700;
     font-size: 17px;
     background: linear-gradient(to right, rgb(125, 60, 143), rgb(100, 83, 183));
+}
+
+.ant-rate-star-second span svg{
+    height: 16px;
+    
 }

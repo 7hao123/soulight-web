@@ -32,16 +32,29 @@ import OrderDetail from "./components/OrderDetail/OrderDetail";
 const router = createBrowserRouter([
   {
     path:'/',
-    element: <MyAccount/>
+    element: <MainContent/>
   },
   {
     path:'/1',
     element: <MainContent/>
+  },
+  
+  {
+    path:'/MyAccount',
+    element:<MyAccount/>
+  },
+  {
+    path:'/4',
+    element:<TextReading/>
+  },
+  {
+    path:'/5',
+    element:<MyOrder/>
+  },
+  {
+    path:'/:messageName',
+    element:<AdvisorDetail/>
   }
-  // {
-  //   path:'/:AdvisorId',
-  //   element:<AdvisorDetail/>
-  // }
 ])
 
 
@@ -84,8 +97,7 @@ const App: React.FC = () => {
           {
             login ?   <User/> : <Buttons setLogin={setLogin} login={login}/>
           }
-        {/* <Buttons/> */}
-        {/* <User/> */}
+  
         </div>
       </Header>
 

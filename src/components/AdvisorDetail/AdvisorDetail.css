@@ -1,5 +1,6 @@
 .info {
     margin-bottom: 24px;
+    position: relative;
 }
 .info h2{
     color: rgb(39,23,72);
@@ -10,6 +11,47 @@
     font-weight: bold;
     font-size: 14px;
 }
+
+
+.loving{
+    position: absolute;
+    display: block;
+    left: 350px;
+    top: -6px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.loving input {
+  
+  
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+
+  
+  .loving svg {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    transition: all 0.3s;
+    fill: #666;
+  }
+  
+  .loving svg:hover {
+    transform: scale(1.1);
+  }
+  
+  .loving input:checked ~ svg {
+    fill: #ffeb49;
+  }
+  
+
+
 
 .mark{
     width: 600px;

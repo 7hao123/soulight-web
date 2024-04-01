@@ -31,3 +31,13 @@
     color: #aaaaaa;
     font-weight: 600;
 }
+
+
+.o1{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #422488;
+    /* border:2px solid #fff; */
+    margin-right: 8px;
+}

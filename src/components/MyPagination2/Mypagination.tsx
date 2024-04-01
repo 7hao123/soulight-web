@@ -8,7 +8,7 @@ interface PaginationProps {
   total?: number;
   leftText?: string;
   rightText?: string;
-  showQuickJumper?: boolean;
+  setPageNumber?:any;
   onChange?: (e: number) => void;
 }
 const Pagination = (
@@ -19,21 +19,20 @@ const Pagination = (
     pageNumber,
     total,
     onChange,
-    current,
-    setCurrent,
+    setPageNumber,
     leftText,
     rightText,
   } = props;
   const [paginationPageSize, setPaginationPageSize] = useState(pageSize); //页面容量
-  const [paginationPageNumber, setPaginationPageNumber] = useState(pageNumber); //页面当前编号
+  // const [pageNumber, setPageNumber] = useState(pageNumber); //页面当前编号
   const [paginationTotal, setPaginationTotal] = useState(total); //总数量
   const [totalPageSize, setTotalPageSize] = useState(0); //总页码
   function handlePage(page){
-    setPaginationPageNumber(page)
+    setPageNumber(page)
   }
   useEffect(() => {
     setTotalPageSize(Math.ceil(paginationTotal! / paginationPageSize!));
-  }, []); //paginationPageNumber
+  }, []); //pageNumber
   const initPage = () => {
     if (totalPageSize <= 7) {
       return Array(totalPageSize)
@@ -41,7 +40,7 @@ const Pagination = (
         .map((item, index) => (
           <div
             className={
-              paginationPageNumber === index + 1
+              pageNumber === index + 1
                 ? "pagination_item pagination_item_actived"
                 : "pagination_item"
             }
@@ -52,7 +51,7 @@ const Pagination = (
           </div>
         ));
     }
-    if (paginationPageNumber! <= 4) {
+    if (pageNumber! <= 4) {
       //前6个+省略+最后一个
       return (
         <>
@@ -61,7 +60,7 @@ const Pagination = (
             .map((item, index) => (
               <div
                 className={
-                  paginationPageNumber === index + 1
+                  pageNumber === index + 1
                     ? "pagination_item pagination_item_actived"
                     : "pagination_item"
                 }
@@ -74,12 +73,12 @@ const Pagination = (
           <div
             className="pagination_simple"
             // onClick={() => {
-            //   if (paginationPageNumber! + 5 >= totalPageSize) {
-            //     setPaginationPageNumber(totalPageSize);
+            //   if (pageNumber! + 5 >= totalPageSize) {
+            //     setPageNumber(totalPageSize);
             //     onChange && onChange!(totalPageSize);
             //   } else {
-            //     setPaginationPageNumber(paginationPageNumber! + 5);
-            //     onChange && onChange!(paginationPageNumber! + 5);
+            //     setPageNumber(pageNumber! + 5);
+            //     onChange && onChange!(pageNumber! + 5);
             //   }
             // }}
           >
@@ -87,12 +86,12 @@ const Pagination = (
           </div>
           <div
             className={
-              paginationPageNumber === totalPageSize
+              pageNumber === totalPageSize
                 ? "pagination_item pagination_item_actived"
                 : "pagination_item"
             }
             onClick={()=>handlePage(totalPageSize)}
-            key={paginationPageNumber! + Math.random()}
+            key={pageNumber! + Math.random()}
           >
             {totalPageSize}
           </div>
@@ -101,14 +100,14 @@ const Pagination = (
     }
     //第1个+省略+当前页码前后5个+省略+最后一个
     if (
-      paginationPageNumber! >= 5 &&
-      paginationPageNumber! <= totalPageSize - 4
+      pageNumber! >= 5 &&
+      pageNumber! <= totalPageSize - 4
     ) {
       return (
         <>
           <div
             className={
-              paginationPageNumber === 1
+              pageNumber === 1
                 ? "pagination_item pagination_item_actived"
                 : "pagination_item"
             }
@@ -120,23 +119,23 @@ const Pagination = (
           <div
             className="pagination_simple"
             // onClick={() => {
-            //   if (paginationPageNumber! - 5 <= 1) {
-            //     setPaginationPageNumber(1);
+            //   if (pageNumber! - 5 <= 1) {
+            //     setPageNumber(1);
             //     onChange && onChange!(1);
             //   } else {
-            //     setPaginationPageNumber(paginationPageNumber! - 5);
-            //     onChange && onChange!(paginationPageNumber! - 5);
+            //     setPageNumber(pageNumber! - 5);
+            //     onChange && onChange!(pageNumber! - 5);
             //   }
             // }}
           >
             <div className='shenglue'>...</div>
           </div>
           {Array(5)
-            .fill(paginationPageNumber! - 2)
+            .fill(pageNumber! - 2)
             .map((item, index) => (
               <div
                 className={
-                  paginationPageNumber === item + index
+                  pageNumber === item + index
                     ? "pagination_item pagination_item_actived"
                     : "pagination_item"
                 }
@@ -149,12 +148,12 @@ const Pagination = (
           <div
             className="pagination_simple"
             // onClick={() => {
-            //   if (paginationPageNumber! + 5 >= totalPageSize) {
-            //     setPaginationPageNumber(totalPageSize);
+            //   if (pageNumber! + 5 >= totalPageSize) {
+            //     setPageNumber(totalPageSize);
             //     onChange && onChange!(totalPageSize);
             //   } else {
-            //     setPaginationPageNumber(paginationPageNumber! + 5);
-            //     onChange && onChange!(paginationPageNumber! + 5);
+            //     setPageNumber(pageNumber! + 5);
+            //     onChange && onChange!(pageNumber! + 5);
             //   }
             // }}
           >
@@ -162,7 +161,7 @@ const Pagination = (
           </div>
           <div
             className={
-              paginationPageNumber === totalPageSize
+              pageNumber === totalPageSize
                 ? "pagination_item pagination_item_actived"
                 : "pagination_item"
             }
@@ -179,7 +178,7 @@ const Pagination = (
       <>
         <div
           className={
-            paginationPageNumber === 1
+            pageNumber === 1
               ? "pagination_item pagination_item_actived"
               : "pagination_item"
           }
@@ -191,12 +190,12 @@ const Pagination = (
         <div
           className="pagination_simple"
           // onClick={() => {
-          //   if (paginationPageNumber! - 5 <= 1) {
-          //     setPaginationPageNumber(1);
+          //   if (pageNumber! - 5 <= 1) {
+          //     setPageNumber(1);
           //     onChange && onChange!(1);
           //   } else {
-          //     setPaginationPageNumber(paginationPageNumber! - 5);
-          //     onChange && onChange!(paginationPageNumber! - 5);
+          //     setPageNumber(pageNumber! - 5);
+          //     onChange && onChange!(pageNumber! - 5);
           //   }
           // }}
         >
@@ -207,7 +206,7 @@ const Pagination = (
           .map((item, index) => (
             <div
               className={
-                paginationPageNumber === item + index
+                pageNumber === item + index
                   ? "pagination_item pagination_item_actived"
                   : "pagination_item"
               }
@@ -227,7 +226,7 @@ const Pagination = (
         
         }
         className={
-          paginationPageNumber === 1
+          pageNumber === 1
             ? "pagination_left pagination_left_disabled"
             : "pagination_left"
         }
@@ -238,13 +237,13 @@ const Pagination = (
 
       <div
         onClick={() => {
-          if (paginationPageNumber !== 1) {
-            setPaginationPageNumber(paginationPageNumber! - 1);
-            onChange && onChange!(paginationPageNumber! - 1);
+          if (pageNumber !== 1) {
+            setPageNumber(pageNumber! - 1);
+            onChange && onChange!(pageNumber! - 1);
           }
         }}
         className={
-          paginationPageNumber === 1
+          pageNumber === 1
             ? "pagination_left pagination_left_disabled"
             : "pagination_left"
         }
@@ -254,18 +253,18 @@ const Pagination = (
       {initPage()}
       <div
         className={
-          paginationPageNumber ===
+          pageNumber ===
           Math.ceil(paginationTotal! / paginationPageSize!)
             ? "pagination_right pagination_right_disabled"
             : "pagination_right"
         }
         onClick={() => {
           if (
-            paginationPageNumber !==
+            pageNumber !==
             Math.ceil(paginationTotal! / paginationPageSize!)
           ) {
-            setPaginationPageNumber(paginationPageNumber! + 1);
-            onChange && onChange!(paginationPageNumber! + 1);
+            setPageNumber(pageNumber! + 1);
+            onChange && onChange!(pageNumber! + 1);
           }
         }}
       >
@@ -273,7 +272,7 @@ const Pagination = (
       </div>
       <div
         className={
-          paginationPageNumber ===
+          pageNumber ===
           Math.ceil(paginationTotal! / paginationPageSize!)
             ? "pagination_right pagination_right_disabled"
             : "pagination_right"

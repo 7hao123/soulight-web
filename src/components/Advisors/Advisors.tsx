@@ -2,6 +2,7 @@ import { useState } from "react";
 import GuideList from "../GuideList/GuideList";
 import MyPagination from '../MyPagination2/Mypagination'
 import './Advisors.css'
+import { Flex } from "antd";
 export default function Advisors() {
   const messages =[
     {  
@@ -90,9 +91,9 @@ export default function Advisors() {
     <>
         {messageItems}
       {/* <MyPagination total={total} defaultPageSize={pageSize}  current={currtentPage} setCurrent={setCurrentPage}/> */}
-      <div style={{marginLeft:'300px',marginBottom:'100px'}}>
-      <MyPagination total={total} pageSize={pageSize} />
-      </div>
+      <Flex justify="center" style={{width:'100%',margin:'32px 0'}}>
+      <MyPagination total={total} pageSize={pageSize} pageNumber={currtentPage} setPageNumber={setCurrentPage} />
+      </Flex>
     
     </>
   )

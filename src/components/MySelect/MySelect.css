@@ -1,3 +1,10 @@
+.dropdown-total{
+    position: absolute;
+    top: 58px;
+    left: 0;
+    z-index: 1000;
+}
+
 
 .dropdown-box{
     width: 400px;

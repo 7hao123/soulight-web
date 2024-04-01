@@ -1,6 +1,6 @@
 import "./TextReading.css";
 import paste from "../../assets/paste.svg";
-import { Form, Input, DatePicker, Select, Flex, Rate } from "antd";
+import { Form, Input, DatePicker, Select, Flex, Rate,DatePickerProps } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import addPicture from "../../assets/addPicture.svg";
 import woman from "../../assets/woman.webp";
@@ -8,6 +8,7 @@ import reply from "../../assets/nltext.png";
 import wallet from "../../assets/75.svg";
 import Online from "../Online/Online";
 import { useState, useRef, useEffect } from "react";
+import dayjs from "dayjs";
 export default function TextReading() {
   const MAX_NAME = 20;
   const MAX_TEXTAREA = 3000;
@@ -18,11 +19,17 @@ export default function TextReading() {
     score: 4.9,
     price: "$9.99",
   };
+  
 
   const fileInputRef = useRef(null);
   // const [imgSrc,setImageSrc] = useState('')
   
   const [base64Image, setBase64Image] = useState('');  
+  const [name,setName] = useState('')
+  const [birth,setBirth] = useState('')
+  const [gender,setGender] = useState('')
+  const [situation,setSituation] = useState('')
+  const [question,setQuestion] =useState('')
   const handleImageClick = () => {
     fileInputRef.current.click();
   };
@@ -42,18 +49,74 @@ export default function TextReading() {
     
     }
   };
+
+  function onNameChange(e){
+      setName(e.target.value)
+  }
+  const onBirthChange: DatePickerProps["onChange"] = (date, dateString) => {
+    console.log(date, dateString);
+    setBirth(dateString);
+  };
+  function onGenderChange(value:string){
+    console.log(value);
+    setGender(value)
+  }
+  function onSituationChange(e){
+    console.log(e.target.value);
+    
+    setSituation(e.target.value)
+  }
+  function onQuestionChange(e){
+    setQuestion(e.target.value)
+  }
+  function onSubmit(){
+    localStorage.setItem('orderName',name)
+    localStorage.setItem('orderBirth',birth)
+    localStorage.setItem('orderGender',gender)
+    localStorage.setItem('orderSituation',situation)
+    localStorage.setItem('orderQuestion',question) 
+  }
+
+  
+
+  // const [form] = Form.useForm();
+
   useEffect(()=>{
     const storedImage = localStorage.getItem('image');  
     if (storedImage) {  
       setBase64Image(storedImage);  
     }  
+    // console.log(localStorage.getItem('orderName'));
+    // setName('789')
+    // console.log(name);
+    
+
+    setName(localStorage.getItem("orderName"));
+    setGender(localStorage.getItem("orderGender"));
+    setBirth(localStorage.getItem("orderBirth"));
+    setSituation(localStorage.getItem('orderSituation'))
+    setQuestion(localStorage.getItem('orderQuestion'))
+    // form.setFieldsValue({note:name,gender:gender,birth:dayjs(birth),situation:situation,question:question})
+    // form.setFields({note:name,gender:gender,birth:birth,situation:situation,question:question})
+     
   },[])
 
-  function onfinish(values: any) {
-    console.log(values);
-  }
+  // function onfinish(values: any) {
+  //   localStorage.setItem('orderName',values.note)
+  //   const a = dayjs(values.birth).format()
+  //   const b = a.slice(0,a.indexOf('T'))
+  //   console.log(b);
+    
+    
+  //   localStorage.setItem('orderBirth',b)
+  //   localStorage.setItem('orderGender',values.gender)
+  //   localStorage.setItem('orderSituation',values.situation)
+  //   localStorage.setItem('orderQuestion',values.question)
+   
+    
+  // }
 
-  const [form] = Form.useForm();
+  
 
   return (
     <>
@@ -70,15 +133,15 @@ export default function TextReading() {
           </div>
           <div>
             <Form
-              form={form}
-              onFinish={onfinish}
+              // form={form}
+              // onFinish={onfinish}
               layout="vertical"
               style={{ width: 500, borderRadius: "6px" }}
             >
               <Form.Item
                 label={<label className="labelcss">Name*</label>}
                 colon={false}
-                name="note"
+                
                 style={{ position: "relative" }}
               >
                 <Input
@@ -86,27 +149,31 @@ export default function TextReading() {
                   placeholder="Enter your name"
                   maxLength={MAX_NAME}
                   showCount
+                  onChange={onNameChange}
+                  value={name}
                 />
               </Form.Item>
               <Form.Item
                 label={<label className="labelcss">Date of Birth*</label>}
                 colon={false}
-                name="birth"
+                
               >
                 <DatePicker
                   className="form-item"
                   placeholder="Enter your date of birth"
+                  onChange={onBirthChange}
+                  value={dayjs(birth)}
                 />
               </Form.Item>
               <Form.Item
                 label={<label className="labelcss">Gender*</label>}
                 colon={false}
-                name="gender"
+                
               >
                 <Select
                   className="form-item"
                   suffixIcon={">"}
-                  defaultValue="Not Specific"
+                  
                   options={[
                     { value: "Female", label: "Female" },
                     { value: "Male", label: "Male" },
@@ -115,28 +182,34 @@ export default function TextReading() {
                       label: "Not Specific",
                     },
                   ]}
+                  onChange={onGenderChange}
+                  value={gender}
                 ></Select>
               </Form.Item>
               <Form.Item
                 label={<label className="labelcss">General Situation*</label>}
-                name="situation"
+                
               >
                 <TextArea
                   showCount
                   style={{ resize: "none", height: "200px" }}
                   maxLength={MAX_TEXTAREA}
+                  onChange={onSituationChange}
+                  value={situation}
                 ></TextArea>
               </Form.Item>
               <Form.Item
                 label={<label className="labelcss">Specific Questions* </label>}
                 colon={false}
-                name="question"
+                
               >
                 <Input
                   showCount
                   className="form-item"
                   placeholder="One question Only"
                   maxLength={MAX_QUESTION}
+                  onChange={onQuestionChange}
+                  value={question}
                 />
               </Form.Item>
               <div>
@@ -161,13 +234,13 @@ export default function TextReading() {
 
               <Flex gap="14px" style={{ marginTop: "16px" }}>
                 <div className="btn-box">
-                  <button className="btn-grey">Submit</button>
+                  <button className="btn-grey" onClick={onSubmit}>Submit</button>
                   <span style={{ color: "#a4a4a4", fontWeight: "bold" }}>
                     Delivered within 24h{" "}
                   </span>
                 </div>
                 <div className="btn-box">
-                  <button className="btn-grey">Speed Up</button>
+                  <button className="btn-grey" onClick={onSubmit}>Speed Up</button>
                   <span style={{ color: "#a4a4a4", fontWeight: "bold" }}>
                     Delivered within 1h{" "}
                   </span>

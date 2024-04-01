@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./MySelect.css";
 import { Flex, Input } from "antd";
 import { UpOutlined } from "@ant-design/icons";
-export default function MySelect() {
+export default function MySelect({handleSelected,country}) {
   function getImage() {
     const modules = import.meta.glob("../../assets/country/*.png", {
       eager: true,
@@ -20,7 +20,16 @@ export default function MySelect() {
   }
   const allCountry = getImage();
   const [category, setCategory] = useState(allCountry);
-  const [currentNum, setCurrentNum] = useState(allCountry[0]);
+  console.log(country);
+  
+  const defaultCountry = allCountry.filter(item =>{
+    
+    
+    return item.num == country
+  })
+  console.log(defaultCountry);
+  
+  const [currentNum, setCurrentNum] = useState(defaultCountry[0]?defaultCountry[0]:allCountry[0]);
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
     const searchContent = e.target.value.toLowerCase();
     const items = allCountry.filter((item) => {
@@ -41,17 +50,23 @@ export default function MySelect() {
     });
 
     setCurrentNum(selectedCountry[0]);
+    handleSelected(selectedCountry[0].num)
+    setIsDropdownVisible(false)
   }
 
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);  
+  function handleSelectVisible(e){
+    setIsDropdownVisible(!isDropdownVisible);
+  }
   return (
     <>
       <Flex vertical style={{ position: "relative" }}>
-        <div className="selected-option">
+        <div className="selected-option" onClick={handleSelectVisible}>
           <img src={currentNum.src} alt="Option 1" />
           <span>+{currentNum.num}</span>
-          <UpOutlined style={{ marginLeft: "14px" }} />
+          <UpOutlined style={{ marginRight: "14px" }} />
         </div>
-        <div style={{position:'absolute',top:'58px',left:'-1px',zIndex:'1000'}}>
+        <div className="dropdown-total" style={{display:isDropdownVisible?'block':'none'}}>
           <div className="dropdown-box">
             <Input type="text" placeholder="Search" onChange={handleSearch} />
             <ul className="dropdown-options">

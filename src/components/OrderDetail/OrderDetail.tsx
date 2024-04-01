@@ -12,7 +12,7 @@ export default function OrderDetail() {
     condition: "Text Reading",
     time: "Jun 28,2023 2:19 PM",
     introduce: "hello thank you thank you very much",
-    score: 5.0,
+    score: 3
   };
   const order = {
     name: "977673894111111",
@@ -100,13 +100,13 @@ export default function OrderDetail() {
         <div className="order-detail-right">
           <Flex align="center">
             <img className="circle-img" src={xnew} alt="" />
-            <Flex vertical className="order-info">
+            <Flex vertical className="order-info2">
               <h2>{message.name}</h2>
               <span className="new-introduce">{message.introduce}</span>
               <Flex gap="small">
                 <Rate style={{height:'20px'}} disabled defaultValue={message.score} />
                 <span style={{ fontWeight: "bold", color: "#6452b7" }}>
-                  {message.score}
+                  {message.score.toFixed(1)}
                 </span>
               </Flex>
             </Flex>

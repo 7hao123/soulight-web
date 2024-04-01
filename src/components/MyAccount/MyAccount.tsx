@@ -1,32 +1,77 @@
-import { Form, Input, DatePicker, Flex, Breadcrumb } from "antd";
+import {
+  Form,
+  Input,
+  DatePicker,
+  Flex,
+  Breadcrumb,
+  DatePickerProps,
+} from "antd";
+import dayjs from "dayjs";
 import "./MyAccount.css";
-import female from '../../assets/female.svg'
-import femaleActive from '../../assets/female-active.svg' 
-import other from '../../assets/no.svg'
-import otherActive from '../../assets/no-active.svg'
-import { useState } from "react";
+import female from "../../assets/female.svg";
+import femaleActive from "../../assets/female-active.svg";
+import other from "../../assets/no.svg";
+import otherActive from "../../assets/no-active.svg";
+import { useEffect, useState } from "react";
 import MySelect from "../MySelect/MySelect";
 export default function MyAccount() {
-  const [gender,setGender] = useState('')
-  function onNameChange(e){
+  const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
+  const [selectedItem, setSelectedItem] = useState("");
+  const [birth, setBirth] = useState(null);
+  const [phoneNum, setPhoneNum] = useState("");
+  const [email, setEmail] = useState("");
+  const [country, setCountry] = useState("");
+  const handleItemSelect = (item) => {
+    setSelectedItem(item);
+    console.log(item);
+  };
+  function onNameChange(e) {
+    setName(e.target.value);
     console.log(e.target.value);
-    
   }
-  function onRadioChange(e){
-      setGender(e.target.value)
+  function onRadioChange(e) {
+    setGender(e.target.value);
   }
-  
-  const activeStyle = {color:'#3d2488',fontWeight:'bold'}
-  const normalStyle = {color:'#575758',fontWeight:'bold'}
+  const onBirthChange: DatePickerProps["onChange"] = (date, dateString) => {
+    console.log(date, dateString);
+    setBirth(dateString);
+  };
+  function onPhoneNumChange(e) {
+    console.log(e.target.value);
+    setPhoneNum(e.target.value);
+  }
+  function onEmailChange(e) {
+    setEmail(e.target.value);
+  }
+
+  function handleSubmit() {
+    localStorage.setItem("accountName", name);
+    localStorage.setItem("accountGender", gender);
+    localStorage.setItem("accountbirth", birth);
+    localStorage.setItem("accountEmail", email);
+    localStorage.setItem("accountPhone", phoneNum);
+    localStorage.setItem("accountCountry", selectedItem);
+  }
+  useEffect(() => {
+    setName(localStorage.getItem("accountName"));
+    setGender(localStorage.getItem("accountGender"));
+    setBirth(localStorage.getItem("accountbirth"));
+    setEmail(localStorage.getItem("accountEmail"));
+    setPhoneNum(localStorage.getItem("accountPhone"));
+    setCountry(localStorage.getItem("accountCountry"));
+  }, []);
+
+  const activeStyle = { color: "#3d2488", fontWeight: "bold" };
+  const normalStyle = { color: "#575758", fontWeight: "bold" };
   return (
     <>
-    {/* 这里导致的横向滚动条？ */}
-          <Flex align="start" style={{ width: "80%" }}>
+      {/* 这里导致的横向滚动条？ */}
+      <Flex align="start" style={{ width: "80%" }}>
         <Breadcrumb separator=">" style={{ margin: "16px 0" }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>All Advisors</Breadcrumb.Item>
         </Breadcrumb>
-       
       </Flex>
       <div className="tabs">
         <div className="tab-item1">User Information</div>
@@ -36,7 +81,7 @@ export default function MyAccount() {
         <Form
           layout="horizontal"
           size="large"
-          style={{ width: 700,borderRadius:'6px' ,}}
+          style={{ width: 700, borderRadius: "6px" }}
           labelCol={{ span: 8 }}
           labelAlign="left"
         >
@@ -44,44 +89,75 @@ export default function MyAccount() {
             label={<label className="labelcss">Name*</label>}
             colon={false}
           >
-            <Input className="form-item" placeholder='Enter your name'
-            onChange={onNameChange} />
+            <Input
+              className="form-item"
+              placeholder="Enter your name"
+              onChange={onNameChange}
+              value={name}
+            />
           </Form.Item>
           <Form.Item
             label={<label className="labelcss">Date of Birth*</label>}
             colon={false}
           >
-            <DatePicker className="form-item" placeholder="Enter your date of birth"/>
+            <DatePicker
+              className="form-item"
+              placeholder="Enter your date of birth"
+              onChange={onBirthChange}
+              value={dayjs(birth)}
+            />
           </Form.Item>
           <Form.Item
             label={<label className="labelcss">Gender*</label>}
             colon={false}
-          > 
-            <Flex gap='40px' className="radio-box">
-            <div>
-            <input type="radio" name='gender' 
-            onChange={onRadioChange}
-            className="gender-radio1" value='female' id='female'/>
-            <Flex vertical align="center" className="radio-color">
-            <img src={gender=='female'?femaleActive:female} height={'32px'} alt="" />
-            <label htmlFor='female' style={gender == 'female'? activeStyle:normalStyle}>female</label>
+          >
+            <Flex gap="40px" className="radio-box">
+              <div>
+                <input
+                  type="radio"
+                  name="gender"
+                  onChange={onRadioChange}
+                  className="gender-radio1"
+                  value="female"
+                  id="female"
+                />
+                <Flex vertical align="center" className="radio-color">
+                  <img
+                    src={gender == "female" ? femaleActive : female}
+                    height={"32px"}
+                    alt=""
+                  />
+                  <label
+                    htmlFor="female"
+                    style={gender == "female" ? activeStyle : normalStyle}
+                  >
+                    female
+                  </label>
+                </Flex>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="gender"
+                  className="gender-radio2"
+                  value="other"
+                  id="other"
+                  onChange={onRadioChange}
+                />
+                <Flex vertical align="center">
+                  <img
+                    src={gender == "other" ? otherActive : other}
+                    height={"32px"}
+                  />
+                  <label
+                    htmlFor="other"
+                    style={gender == "other" ? activeStyle : normalStyle}
+                  >
+                    other
+                  </label>
+                </Flex>
+              </div>
             </Flex>
-           
-            </div>
-            <div>
-            <input type="radio" name="gender" className="gender-radio2" value='other' id="other" 
-            onChange={onRadioChange}
-            />
-            <Flex vertical align="center">
-            <img src={gender=='other'?otherActive:other} height={'32px'}/>
-            <label htmlFor="other" style={gender == 'other'? activeStyle:normalStyle}>other</label>
-            </Flex>
-          
-            </div>
-            </Flex>
-       
-          
-          
           </Form.Item>
           <Form.Item
             label={<label className="labelcss">Email Address</label>}
@@ -90,6 +166,8 @@ export default function MyAccount() {
             <Input
               className="form-item"
               placeholder="Enter your email address "
+              onChange={onEmailChange}
+              value={email}
             />
           </Form.Item>
           <Form.Item
@@ -97,17 +175,21 @@ export default function MyAccount() {
             colon={false}
           >
             <Flex gap="small" style={{ width: "500px" }}>
-            <MySelect/>
-              <Input  placeholder="Enter your phone number"/>
+
+              <MySelect handleSelected={handleItemSelect} country={country}/>
+
+              <Input
+                placeholder="Enter your phone number"
+                onChange={onPhoneNumChange}
+                value={phoneNum}
+              />
             </Flex>
           </Form.Item>
-            <Form.Item style={{marginLeft:'233px'}}>
-                
-                <button className="submit">Save Changes</button>
-                
-                
-            </Form.Item>
-          
+          <Form.Item style={{ marginLeft: "233px" }}>
+            <button className="submit" onClick={handleSubmit}>
+              Save Changes
+            </button>
+          </Form.Item>
         </Form>
       </div>
     </>
