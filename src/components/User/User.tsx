@@ -3,16 +3,24 @@ import { Flex, Popover } from "antd";
 import female from "../../assets/female_1.png";
 import logo75 from '../../assets/75.svg'
 import {Link} from 'react-router-dom'
+import {  useSelector,useDispatch } from "react-redux";
+import { loginOut } from "../../store/features/login";
 export default function User() {
-  const name = localStorage.getItem('accountName')
+  const dispatch = useDispatch()
+  const handleLoginOut = ()=>{
+      dispatch(loginOut())
+  }
+  const {accountname} = useSelector((store)=>store.account)
+  // const name = localStorage.getItem('accountName')
   const content = (
     <Flex vertical>
       <Link to='/MyAccount'>My Account</Link>
 
       <Link to='/MyOrder'>My Order</Link>
-      <a>Sign Out</a>
+      <a onClick={handleLoginOut}>Sign Out</a>
     </Flex>
   );
+ 
   
   return (
     <>
@@ -20,7 +28,7 @@ export default function User() {
         <Flex align="center" gap="small" className="user">
           <img src={female} height={"45px"} alt="" />
           <Flex vertical>
-            <p className="name">Hi,{name ? name : "977673894111111"}</p>
+            <p className="name">Hi,{accountname ? accountname : "977673894111111"}</p>
             <Flex>
               <div className="radius-no-color"></div>
               <div className="account">$1234.67</div>

@@ -7,8 +7,11 @@ import { useParams } from "react-router-dom";
 
 import "./OrderDetail.css";
 import { CSSProperties, useState } from "react";
+import { useSelector } from "react-redux";
+import store from "../../store";
 export default function OrderDetail() {
   const params = useParams();
+  const {messageName} = params
   console.log(params);
   const style1:CSSProperties = {display:'none'}
   const style2:CSSProperties ={display:'block'}
@@ -23,19 +26,29 @@ export default function OrderDetail() {
     introduce: "hello thank you thank you very much",
     score: 3,
   };
+
+  const {orders} = useSelector((store)=>store.order)
+  console.log(orders);
+  
+  const order1 = orders.filter(item =>{
+    return item.name == messageName
+  })
+  const order =order1[0]
+  console.log(order1);
+  
   const handlexiala1= ()=>{
     setxiala1(!xiala1)
   }
   const handlexiala2= ()=>{
     setxiala2(!xiala2)
   }
-  const order = {
-    name: "977673894111111",
-    birth: "02-27-2005",
-    gender: "Not Specific",
-    generalSituation: "123456",
-    specificQuestion: "ewew",
-  };
+  // const order = {
+  //   name: "977673894111111",
+  //   birth: "02-27-2005",
+  //   gender: "Not Specific",
+  //   generalSituation: "123456",
+  //   specificQuestion: "ewew",
+  // };
   return (
     <>
       <div
@@ -120,13 +133,13 @@ export default function OrderDetail() {
           </div>
           <div className="situation">
             <h2>General Situation</h2>
-            <p>{order.generalSituation}</p>
+            <p>{order.situation}</p>
           </div>
           <div className="situation">
             <h2>Specific Question</h2>
-            <p>{order.specificQuestion}</p>
+            <p>{order.question}</p>
           </div>
-          <img src={addPicture} className="pic" alt="" />
+          <img src={order.img} className="pic" alt="" />
         </div>
         <div className="order-detail-right">
           <Flex align="center">

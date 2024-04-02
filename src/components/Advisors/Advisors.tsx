@@ -7,7 +7,7 @@ export default function Advisors() {
   const messages =[
     {  
         image: "#",  
-        
+        id:'1',
         name: "Harmony Bliss Harmony",  
         character: "Holistic healer Tarot reader",  
         information:  
@@ -22,9 +22,12 @@ export default function Advisors() {
         oldReadingPrice: "$23.99",  
         minPrice: "$11.99",  
         oldMinPrice: "$22.99",  
+        onTime: "99%",
+    accurate: "98%",
       },  
       {  
         image: "#",  
+        id:'2',
         name: "Mystic Vision Mystic",  
         character: "Psychic medium Dream interpreter",  
         information:  
@@ -42,6 +45,7 @@ export default function Advisors() {
       },  
       {  
         image: "#",  
+        id:'3',
         name: "Divine Insight Divine",  
         character: "Angel communicator Spiritual advisor",  
         information:  
@@ -59,6 +63,7 @@ export default function Advisors() {
       },  
       {  
         image: "#",  
+        id:'4',
         name: "Wisdom Seeker Wisdom",  
         character: "Astrologer Tarot reader",  
         information:  
@@ -83,10 +88,10 @@ export default function Advisors() {
   const currentItems = messages.slice(startIndex,endIndex)
 
   const messageItems: React.ReactNode[] = currentItems.map((message, index) => (
-    <>
-      <GuideList key={message.name} message={message} />
+    <div key={message.name}>
+      <GuideList  message={message} />
       {index < currentItems.length - 1 && <div className="separator"></div>}
-    </>
+    </div>
   ));
   return(
     <>

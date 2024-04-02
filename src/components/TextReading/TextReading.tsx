@@ -10,6 +10,8 @@ import Online from "../Online/Online";
 import { useState, useRef, useEffect } from "react";
 import dayjs from "dayjs";
 import rocket from '../../assets/rocket.svg'
+import { useDispatch,useSelector } from "react-redux";
+import { addOrder } from "../../store/features/orders";
 export default function TextReading() {
   const MAX_NAME = 20;
   const MAX_TEXTAREA = 3000;
@@ -22,7 +24,7 @@ export default function TextReading() {
     reviews:1987
   };
   
-
+ 
   const fileInputRef = useRef(null);
   // const [imgSrc,setImageSrc] = useState('')
   
@@ -78,7 +80,26 @@ export default function TextReading() {
   function onQuestionChange(e:React.ChangeEvent<HTMLInputElement>){
     setQuestion(e.target.value)
   }
+  const dispatch = useDispatch();
+  const {orders} = useSelector((store)=>store.order)
+  
   function onSubmit(){
+
+    const form = {
+      name,
+      birth,
+      gender,
+      situation,
+      question,  
+      time:'2023-04-01',
+      img:base64Image
+    }
+    
+    dispatch(addOrder(form))
+    console.log(orders);
+    
+    // localStorage.setItem('orders',JSON.stringify(orders))
+
     localStorage.setItem('orderName',name)
     localStorage.setItem('orderBirth',birth)
     localStorage.setItem('orderGender',gender)
@@ -86,7 +107,9 @@ export default function TextReading() {
     localStorage.setItem('orderQuestion',question) 
   }
 
-  
+  useEffect(()=>{
+    localStorage.setItem('orders', JSON.stringify(orders));  
+  },[orders])
 
   // const [form] = Form.useForm();
 
@@ -95,16 +118,13 @@ export default function TextReading() {
     if (storedImage) {  
       setBase64Image(storedImage);  
     }  
-    // console.log(localStorage.getItem('orderName'));
-    // setName('789')
-    // console.log(name);
-    console.log(dayjs(null))
+ 
 
-    setName(localStorage.getItem("orderName")! );
-    setGender(localStorage.getItem("orderGender")!);
-    setBirth(localStorage.getItem("orderBirth")!);
-    setSituation(localStorage.getItem('orderSituation')!)
-    setQuestion(localStorage.getItem('orderQuestion')!)
+    // setName(localStorage.getItem("orderName")! );
+    // setGender(localStorage.getItem("orderGender")!);
+    // setBirth(localStorage.getItem("orderBirth")!);
+    // setSituation(localStorage.getItem('orderSituation')!)
+    // setQuestion(localStorage.getItem('orderQuestion')!)
     // form.setFieldsValue({note:name,gender:gender,birth:dayjs(birth),situation:situation,question:question})
     // form.setFields({note:name,gender:gender,birth:birth,situation:situation,question:question})
      
