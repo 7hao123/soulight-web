@@ -1,6 +1,5 @@
 import React, { ReactNode, useState } from "react";
 import {  Layout } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
 const { Header, Content, Footer } = Layout;
 import soulightNav from "./assets/soulightNav@3x.png";
 import MainContent from "./components/MainContent/MainContent";
@@ -21,43 +20,13 @@ import MyOrder from './components/MyOrder/MyOrder'
 // }));
 
 import {
-  createBrowserRouter,
-  Outlet,
-  RouterProvider
+ 
+  Routes,
+  Route
 }from 'react-router-dom'
 import MyAccount from "./components/MyAccount/MyAccount";
 import TextReading from "./components/TextReading/TextReading";
 import OrderDetail from "./components/OrderDetail/OrderDetail";
-
-const router = createBrowserRouter([
-  {
-    path:'/',
-    element: <MainContent/>
-  },
-  {
-    path:'/1',
-    element: <MainContent/>
-  },
-  
-  {
-    path:'/MyAccount',
-    element:<MyAccount/>
-  },
-  {
-    path:'/4',
-    element:<TextReading/>
-  },
-  {
-    path:'/5',
-    element:<MyOrder/>
-  },
-  {
-    path:'/:messageName',
-    element:<AdvisorDetail/>
-  }
-])
-
-
 
 
 const items = [
@@ -102,9 +71,17 @@ const App: React.FC = () => {
       </Header>
 
       <Content className="Content">
+          <Routes>
+            <Route path='/' element={<MainContent/>}/>
+            <Route path="/MyAccount" element={<MyAccount/>}/>
+            <Route path="/Advisor/:messageName" element={<AdvisorDetail/>}/>
+            <Route path="/TextReading" element={<TextReading/>}/>
+            <Route path="/MyOrder" element={<MyOrder/>}/>
+            <Route path="/OrderDetail/:messageName" element={<OrderDetail/>}/>
+          </Routes>
           {/* <MainContent/> */}
-          <RouterProvider router={router}/>
-          <Outlet/>
+          {/* <RouterProvider router={router}/> */}
+          {/* <Outlet/> */}
       </Content>
       <Footer className="Footer">
         <div className="footer">

@@ -1,6 +1,6 @@
 import "./TextReading.css";
 import paste from "../../assets/paste.svg";
-import { Form, Input, DatePicker, Select, Flex, Rate,DatePickerProps } from "antd";
+import { Form, Input, DatePicker, Select, Flex, Rate,DatePickerProps,Breadcrumb } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import addPicture from "../../assets/addPicture.svg";
 import woman from "../../assets/woman.webp";
@@ -18,6 +18,7 @@ export default function TextReading() {
     character: "Love expert,97.4% accuracy",
     score: 4.9,
     price: "$9.99",
+    reviews:1987
   };
   
 
@@ -31,18 +32,25 @@ export default function TextReading() {
   const [situation,setSituation] = useState('')
   const [question,setQuestion] =useState('')
   const handleImageClick = () => {
-    fileInputRef.current.click();
+    // fileInputRef.current.click();
+    if (fileInputRef.current) {  
+      // 确保 fileInputRef.current 不为 null 或 undefined  
+      fileInputRef.current.click();  
+    } else {  
+      // 处理 fileInputRef.current 为空的情况  
+      console.error('fileInputRef 尚未被赋值');  
+    } 
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
+  const handleFileChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     // console.log(window.URL.createObjectURL(file));
     // const objectUrl = window.URL.createObjectURL(file); 
     if(file){
       const reader = new FileReader();
     reader.onload = e =>{
-      setBase64Image(e.target.result)
-      localStorage.setItem('image',e.target.result)
+      setBase64Image(e.target?.result as string)
+      localStorage.setItem('image',e.target?.result as string)
       
     }
     reader.readAsDataURL(file)
@@ -50,7 +58,7 @@ export default function TextReading() {
     }
   };
 
-  function onNameChange(e){
+  function onNameChange(e:React.ChangeEvent<HTMLInputElement>){
       setName(e.target.value)
   }
   const onBirthChange: DatePickerProps["onChange"] = (date, dateString) => {
@@ -61,12 +69,12 @@ export default function TextReading() {
     console.log(value);
     setGender(value)
   }
-  function onSituationChange(e){
+  function onSituationChange(e:React.ChangeEvent<HTMLTextAreaElement>){
     console.log(e.target.value);
     
     setSituation(e.target.value)
   }
-  function onQuestionChange(e){
+  function onQuestionChange(e:React.ChangeEvent<HTMLInputElement>){
     setQuestion(e.target.value)
   }
   function onSubmit(){
@@ -91,11 +99,11 @@ export default function TextReading() {
     // console.log(name);
     
 
-    setName(localStorage.getItem("orderName"));
-    setGender(localStorage.getItem("orderGender"));
-    setBirth(localStorage.getItem("orderBirth"));
-    setSituation(localStorage.getItem('orderSituation'))
-    setQuestion(localStorage.getItem('orderQuestion'))
+    setName(localStorage.getItem("orderName")! );
+    setGender(localStorage.getItem("orderGender")!);
+    setBirth(localStorage.getItem("orderBirth")!);
+    setSituation(localStorage.getItem('orderSituation')!)
+    setQuestion(localStorage.getItem('orderQuestion')!)
     // form.setFieldsValue({note:name,gender:gender,birth:dayjs(birth),situation:situation,question:question})
     // form.setFields({note:name,gender:gender,birth:birth,situation:situation,question:question})
      
@@ -120,6 +128,19 @@ export default function TextReading() {
 
   return (
     <>
+        <div
+        style={{ width: "80%", display: "flex", justifyContent: "flex-start" }}
+      >
+        <Breadcrumb
+          separator=">"
+          style={{ margin: "32px 0 32px 0" }}
+          items={[
+            { title: <a href="/">Home</a> },
+            {title:<a href={`/Advisor/${message.reviews}`}>{message.name}</a>},
+            { title: "Text Reading" },
+          ]}
+        ></Breadcrumb>
+      </div>
       <div className="text-reading-title">Order Request</div>
 
       <div className="text-reading-main">

@@ -3,12 +3,16 @@ import dog from "../../assets/woman.webp";
 import RateList2 from "../RateList2/RateList2";
 import SaleBlock from "../SaleBlock/SaleBlock";
 import "./AdvisorDetail.css";
-import MyPagination from "../MyPagination/MyPagination";
+import MyPagination from "../MyPagination2/Mypagination";
 import huangzuan from "../../assets/huangzuan.svg";
-import { useState } from "react";
-import heart from '../../assets/heart.png'
-import redHeart from '../../assets/redHeart.png'
+import { useEffect, useState } from "react";
+import heart from "../../assets/heart.png";
+import redHeart from "../../assets/redHeart.png";
+import { useParams, Link } from "react-router-dom";
 export default function AdvisorDetail() {
+  const params = useParams();
+  console.log(params);
+
   const message = {
     image: "#",
     name: "Harmony Bliss Harmony",
@@ -31,23 +35,29 @@ export default function AdvisorDetail() {
     time: "Jul 17,2023 4:22:9",
     score: "5.0",
   };
-  const [isLoving,setIsLoving] = useState(false)
-  function handleLoving(name:string){
-   
-   
-    setIsLoving(!isLoving)
-  //  为什么？
-    localStorage.setItem(name,String(!isLoving)) 
+  const [isLoving, setIsLoving] = useState(false);
+  function handleLoving() {
+    setIsLoving(!isLoving);
+    localStorage.setItem(message.name, String(!isLoving));
   }
+  useEffect(() => {
+    const b = localStorage.getItem(message.name);
+    const bb = b === "true";
+    console.log(bb);
+    setIsLoving(bb);
+  }, []);
 
   return (
     <>
-      <Flex align="start" style={{ width: "80%" }}>
-        <Breadcrumb separator=">" style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>All Advisors</Breadcrumb.Item>
-        </Breadcrumb>
-      </Flex>
+      <div
+        style={{ width: "80%", display: "flex", justifyContent: "flex-start" }}
+      >
+        <Breadcrumb
+          separator=">"
+          style={{ margin: "32px 0 16px 0" }}
+          items={[{ title: <a href="/">Home</a> }, { title: message.name }]}
+        ></Breadcrumb>
+      </div>
 
       <div className="container">
         <div className="leftblock">
@@ -58,8 +68,16 @@ export default function AdvisorDetail() {
                 <h2>{message.name}</h2>
                 <p>{message.character}</p>
                 <label className="loving">
-                  <input type="checkbox" onChange={()=>handleLoving(message.name)} checked={isLoving} />
-                  {isLoving?<img height={'45px'} src={redHeart}/>:<img height={'45px'} src={heart}/>}
+                  <input
+                    type="checkbox"
+                    onChange={handleLoving}
+                    checked={isLoving}
+                  />
+                  {isLoving ? (
+                    <img height={"45px"} src={redHeart} />
+                  ) : (
+                    <img height={"45px"} src={heart} />
+                  )}
                   {/* <svg
                     height="24px"
                     id="Layer_1"
@@ -165,9 +183,13 @@ export default function AdvisorDetail() {
           </Flex>
           <div className="triangle">
             <div>
-              <span style={{ color: "#3c2488", fontWeight: "bold" }}>
-                Text Reading
-              </span>
+              <Link to="/TextReading">
+                {" "}
+                <span style={{ color: "#3c2488", fontWeight: "bold" }}>
+                  Text Reading
+                </span>
+              </Link>
+
               <p>Delivered within 24h</p>
             </div>
             <div>
@@ -209,7 +231,7 @@ export default function AdvisorDetail() {
         </div>
       </div>
       <div style={{ marginBottom: "60px" }}>
-        <MyPagination />
+        <MyPagination total={60} />
       </div>
     </>
   );

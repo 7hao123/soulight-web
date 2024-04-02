@@ -2,9 +2,18 @@ import arrow from "../../assets/xiala.svg";
 import paste from "../../assets/paste.svg";
 import addPicture from "../../assets/addPicture.svg";
 import xnew from "../../assets/xnew.webp";
-import { Flex, Rate } from "antd";
+import { Flex, Rate, Breadcrumb } from "antd";
+import { useParams } from "react-router-dom";
+
 import "./OrderDetail.css";
+import { CSSProperties, useState } from "react";
 export default function OrderDetail() {
+  const params = useParams();
+  console.log(params);
+  const style1:CSSProperties = {display:'none'}
+  const style2:CSSProperties ={display:'block'}
+  const [xiala1,setxiala1] = useState(true)
+  const [xiala2,setxiala2] =useState(true)
   const message = {
     name: "Sans",
     info: "ewew",
@@ -12,8 +21,14 @@ export default function OrderDetail() {
     condition: "Text Reading",
     time: "Jun 28,2023 2:19 PM",
     introduce: "hello thank you thank you very much",
-    score: 3
+    score: 3,
   };
+  const handlexiala1= ()=>{
+    setxiala1(!xiala1)
+  }
+  const handlexiala2= ()=>{
+    setxiala2(!xiala2)
+  }
   const order = {
     name: "977673894111111",
     birth: "02-27-2005",
@@ -23,6 +38,20 @@ export default function OrderDetail() {
   };
   return (
     <>
+      <div
+        style={{ width: "80%", display: "flex", justifyContent: "flex-start" }}
+      >
+        <Breadcrumb
+          separator=">"
+          style={{ margin: "32px 0 20px 0" }}
+          items={[
+            { title: <a href="/">Home</a> },
+            { title: <a href="/MyOrder">MyOrder</a> },
+            { title: "Order" },
+          ]}
+        ></Breadcrumb>
+      </div>
+
       <div className="order-detail">
         <div className="order-detail-left">
           <div className="order-message">
@@ -37,12 +66,13 @@ export default function OrderDetail() {
                 <img
                   src={arrow}
                   height={"20px"}
-                  style={{ marginRight: "5px" }}
+                  style={{ marginRight: "5px",cursor:'pointer' }}
                   alt=""
+                  onClick={handlexiala1}
                 />
               </div>
             </div>
-            <div className="xiala1">
+            <div className="xiala1" style={xiala1?style2:style1}>
               <div className="flex-between time-color">
                 <span>Order Time</span>
                 <span>End Time</span>
@@ -67,12 +97,13 @@ export default function OrderDetail() {
                 <img
                   src={arrow}
                   height={"20px"}
-                  style={{ marginRight: "5px" }}
+                  style={{ marginRight: "5px",cursor:'pointer' }}
                   alt=""
+                  onClick={handlexiala2}
                 />
               </div>
             </div>
-            <div className="xiala2">
+            <div className="xiala2" style={xiala2?style2:style1}>
               <div className="flex-between request-color">
                 <span>Name</span>
                 <span>{order.name}</span>
@@ -104,92 +135,94 @@ export default function OrderDetail() {
               <h2>{message.name}</h2>
               <span className="new-introduce">{message.introduce}</span>
               <Flex gap="small">
-                <Rate style={{height:'20px'}} disabled defaultValue={message.score} />
+                <Rate
+                  style={{ height: "20px" }}
+                  disabled
+                  defaultValue={message.score}
+                />
                 <span style={{ fontWeight: "bold", color: "#6452b7" }}>
                   {message.score.toFixed(1)}
                 </span>
               </Flex>
             </Flex>
           </Flex>
-          <Flex  gap='middle'  style={{margin:'16px 0 32px 16px'}}>
+          <Flex gap="middle" style={{ margin: "16px 0 32px 16px" }}>
             <Flex vertical gap="4px" align="center">
-              <span className='rate-color'>1128</span>
-              <span className='rate-content-color'>READINGS</span>
+              <span className="rate-color">1128</span>
+              <span className="rate-content-color">READINGS</span>
             </Flex>
             <Flex vertical gap="4px" align="center">
-              <span className='rate-color'>92.8hr</span>
-              <span className='rate-content-color'>PESPONSE IN</span>
+              <span className="rate-color">92.8hr</span>
+              <span className="rate-content-color">PESPONSE IN</span>
             </Flex>
             <Flex vertical gap="4px" align="center">
-              <span className='rate-color'>99%</span>
-              <span className='rate-content-color'>ACCURATE</span>
+              <span className="rate-color">99%</span>
+              <span className="rate-content-color">ACCURATE</span>
             </Flex>
             <Flex vertical gap="4px" align="center">
-              <span className='rate-color'>92%</span>
-              <span className='rate-content-color'>ON-TIME</span>
+              <span className="rate-color">92%</span>
+              <span className="rate-content-color">ON-TIME</span>
             </Flex>
           </Flex>
-          
-          <div className="triangle">
-              <div>
-                <span>Text Reading</span>
-                <p>Delivered within 24h</p>
-              </div>
-              <div>
-                <button className="dollar">$ 4.99</button>  
-              </div>
+
+          <div className="triangle2">
+            <div>
+              <span>Text Reading</span>
+              <p>Delivered within 24h</p>
+            </div>
+            <div>
+              <button className="dollar2">$ 4.99</button>
+            </div>
           </div>
-          <div className="triangle">
-              <div>
-                <span>Text Reading</span>
-                <p>Delivered within 24h</p>
-              </div>
-              <div>
-                <button className="dollar">$ 4.99</button>  
-              </div>
+          <div className="triangle2">
+            <div>
+              <span>Text Reading</span>
+              <p>Delivered within 24h</p>
+            </div>
+            <div>
+              <button className="dollar2">$ 4.99</button>
+            </div>
           </div>
-          <div className="triangle">
-              <div>
-                <span>Text Reading</span>
-                <p>Delivered within 24h</p>
-              </div>
-              <div>
-                <button className="dollar">$ 4.99</button>  
-              </div>
+          <div className="triangle2">
+            <div>
+              <span>Text Reading</span>
+              <p>Delivered within 24h</p>
+            </div>
+            <div>
+              <button className="dollar2">$ 4.99</button>
+            </div>
           </div>
-          <div className="triangle">
-              <div>
-                <span style={{ lineHeight: "43px" }}>Live Text Chat</span>
-              </div>
-              <div>
-                <button className="dollar-grey">$0.99/min</button>
-              </div>
+          <div className="triangle2">
+            <div>
+              <span style={{ lineHeight: "43px" }}>Live Text Chat</span>
+            </div>
+            <div>
+              <button className="dollar2-grey2">$0.99/min</button>
+            </div>
           </div>
-          <div className="triangle">
-              <div>
-                <span style={{ lineHeight: "43px" }}>Live Text Chat</span>
-              </div>
-              <div>
-                <button className="dollar-grey">$0.99/min</button>
-              </div>
+          <div className="triangle2">
+            <div>
+              <span style={{ lineHeight: "43px" }}>Live Text Chat</span>
+            </div>
+            <div>
+              <button className="dollar2-grey2">$0.99/min</button>
+            </div>
           </div>
-          <div className="triangle">
-              <div>
-                <span style={{ lineHeight: "43px" }}>Live Text Chat</span>
-              </div>
-              <div>
-                <button className="dollar-grey">$0.99/min</button>
-              </div>
+          <div className="triangle2">
+            <div>
+              <span style={{ lineHeight: "43px" }}>Live Text Chat</span>
+            </div>
+            <div>
+              <button className="dollar2-grey2">$0.99/min</button>
+            </div>
           </div>
 
           <Flex justify="center">
-                <div className="note">
-                    <div>See what you will get:</div>
-                    <button>Service Preview</button>
-                </div>
+            <div className="note">
+              <div>See what you will get:</div>
+              <button>Service Preview</button>
+            </div>
           </Flex>
-          
-          
         </div>
       </div>
     </>

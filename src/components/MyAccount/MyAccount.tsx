@@ -67,12 +67,19 @@ export default function MyAccount() {
   return (
     <>
       {/* 这里导致的横向滚动条？ */}
-      <Flex align="start" style={{ width: "80%" }}>
-        <Breadcrumb separator=">" style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>All Advisors</Breadcrumb.Item>
-        </Breadcrumb>
-      </Flex>
+      <div
+        style={{ width: "80%", display: "flex", justifyContent: "flex-start" }}
+      >
+        <Breadcrumb
+          separator=">"
+          style={{ margin: "32px 0 0 0" }}
+          items={[
+            { title: <a href="/">Home</a> },
+         
+            { title: "MyAccount" },
+          ]}
+        ></Breadcrumb>
+      </div>
       <div className="tabs">
         <div className="tab-item1">User Information</div>
         <div className="tab-item2">Payment Information</div>

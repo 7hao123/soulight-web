@@ -1,5 +1,9 @@
 import './Button.css'
-export default function Buttons({setLogin,login}:any){
+interface ButtonsProps{
+  setLogin:React.Dispatch<React.SetStateAction<boolean>>;
+  login:boolean
+}
+export default function Buttons({setLogin,login}:ButtonsProps){
     const style3 = {
         borderColor: "#6750b3",
         marginLeft: "12px",

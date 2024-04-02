@@ -8,10 +8,18 @@ export default function MainContent() {
     <>
       <img width={"100%"} src={soulightPsyBg} alt="" />
       <div className="main">
-        <Breadcrumb separator=">" style={{ margin: "16px 0 40px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>All Advisors</Breadcrumb.Item>
-        </Breadcrumb>
+      <div
+        style={{ width: "100%", display: "flex", justifyContent: "flex-start" }}
+      >
+        <Breadcrumb
+          separator=">"
+          style={{ margin: "32px 0 32px 0" }}
+          items={[
+            { title: <a href="/">Home</a> },
+            { title: "All Advisors" },
+          ]}
+        ></Breadcrumb>
+      </div>
         <Advisors />
       </div>
     </>

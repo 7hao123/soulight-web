@@ -1,7 +1,7 @@
 import OrderItem from "../OrderItem/OrderItem";
 import MyPagination from "../MyPagination2/Mypagination";
 import {useState} from 'react'
-import { Flex,Empty } from "antd";
+import { Flex,Empty,Breadcrumb } from "antd";
 import "./MyOrder.css";
 export default function MyOrder() {
     const messages = [  
@@ -119,15 +119,28 @@ export default function MyOrder() {
   const currentItems = messages.slice(startIndex, endIndex);
   const messageItems: React.ReactNode[] = currentItems.map((message, index) => (
     <>
-      <OrderItem key={message.name} message={message} />
+      <OrderItem key={message.info} message={message} />
       {index < currentItems.length - 1 && <div className="separator"></div>}
     </>
   ));
   return messages.length>0?(
     <>
-      <div style={{ width: "80%", marginTop: "60px" }}>
+        <div
+        style={{ width: "80%", display: "flex", justifyContent: "flex-start" }}
+      >
+        <Breadcrumb
+          separator=">"
+          style={{ margin: "32px 0 32px 0" }}
+          items={[
+            { title: <a href="/">Home</a> },
+         
+            { title: "MyOrder" },
+          ]}
+        ></Breadcrumb>
+      </div>
+      <div style={{ width: "80%" }}>
         {messageItems}
-        <Flex justify="center" style={{ width: "100%", margin: "32px 0" }}>
+        <Flex justify="center" style={{ width: "100%", margin: "80px 0" }}>
           <MyPagination
             total={total}
             pageSize={pageSize}

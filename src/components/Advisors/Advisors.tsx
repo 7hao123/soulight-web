@@ -7,6 +7,7 @@ export default function Advisors() {
   const messages =[
     {  
         image: "#",  
+        
         name: "Harmony Bliss Harmony",  
         character: "Holistic healer Tarot reader",  
         information:  

@@ -38,14 +38,22 @@
 
 }
 
-.ant-breadcrumb{
+.ant-breadcrumb-link a{
   font-size: 16px;
   font-weight: bold;
   color: #23173e;
 }
+.ant-breadcrumb .ant-breadcrumb-separator{
+  color:  #23173e;
+}
+.ant-breadcrumb .ant-breadcrumb-separator:first-child(){
+  color: red;
+}
 
 .ant-breadcrumb li:last-child{
-  color: #9c9c9c
+  color: #9c9c9c;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 

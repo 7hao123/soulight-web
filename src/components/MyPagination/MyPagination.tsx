@@ -1,4 +1,4 @@
-import    React from 'react';  
+
 import {  Pagination } from 'antd'; 
 import type {PaginationProps}  from 'antd'
 import { VerticalLeftOutlined,VerticalRightOutlined,LeftOutlined,RightOutlined } from '@ant-design/icons';

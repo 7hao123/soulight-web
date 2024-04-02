@@ -2,14 +2,14 @@ import "./User.css";
 import { Flex, Popover } from "antd";
 import female from "../../assets/female_1.png";
 import logo75 from '../../assets/75.svg'
-import {Navigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 export default function User() {
   const name = localStorage.getItem('accountName')
   const content = (
     <Flex vertical>
-      <a >My Account</a>
+      <Link to='/MyAccount'>My Account</Link>
 
-      <a>My Order</a>
+      <Link to='/MyOrder'>My Order</Link>
       <a>Sign Out</a>
     </Flex>
   );

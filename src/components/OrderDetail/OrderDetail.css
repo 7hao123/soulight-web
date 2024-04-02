@@ -124,7 +124,7 @@
 }
 
 
-.triangle{
+.triangle2{
     width: 370px;
     height: 65px;
     border-radius: 6px;
@@ -140,13 +140,13 @@
     align-items:center
 }
 
-.triangle span{
+.triangle2 span{
     color: #3d2488;
     font-size: 16px;
     font-weight: bold;
 }
 
-.triangle p{
+.triangle2 p{
     color: #876eb6;
     font-weight: 500;
 }
@@ -159,7 +159,7 @@
     align-items:center
 }
 
-.dollar{
+.dollar2{
     width: 105px;
     height: 32px;
     background: linear-gradient(to right, rgb(129, 65, 146), rgb(99, 82, 183));
@@ -169,7 +169,7 @@
     border-radius: 6px;
 }
 
-.dollar-grey{
+.dollar2-grey2{
    background: #929292;
    width: 105px;
    height: 32px;

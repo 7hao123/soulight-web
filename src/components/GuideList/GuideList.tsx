@@ -4,7 +4,8 @@ import RateList from "../RateList/RateList";
 import SaleBlock from "../SaleBlock/SaleBlock";
 import { MessageOutlined } from "@ant-design/icons";
 import img1 from "../../assets/woman.webp";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 export default function GuideList({ message }: any) {
   const style1 = {
     borderColor: "#3c2488",
@@ -31,20 +32,18 @@ export default function GuideList({ message }: any) {
     fontSize: "16px",
     fontWeight: "bold",
   };
-  // function Routerto(a){
-  //   console.log(a);
-  //   // <Link to={``}></Link>
 
-  // }
   return (
     <div className="box">
       <Flex>
         <img height={"160px"} src={img1} alt="" />
         <div className="introduce">
-          <h2>
+          
             
-            <NavLink to={`/${message.name}`}></NavLink> {message.name}
-          </h2>
+            <Link to={`Advisor/${message.reviews}`}>
+              <h2>{message.name}</h2>
+              </Link> 
+          
           <p>{message.character}</p>
           <p>{message.information}</p>
         </div>
