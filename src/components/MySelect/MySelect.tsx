@@ -2,9 +2,12 @@ import { useState } from "react";
 import "./MySelect.css";
 import { Flex, Input } from "antd";
 import { UpOutlined } from "@ant-design/icons";
+interface MySelectProps{
+  handleSelected:(item:number)=>void;
+  country:number;
+}
 
-
-export default function MySelect({handleSelected,country}) {
+export default function MySelect({handleSelected,country}:MySelectProps) {
   function getImage() {
     const modules = import.meta.glob("../../assets/country/*.png", {
       eager: true,

@@ -18,7 +18,7 @@ export default function MyAccount() {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [selectedItem, setSelectedItem] = useState("");
-  const [birth, setBirth] = useState(null);
+  const [birth, setBirth] = useState('');
   const [phoneNum, setPhoneNum] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
@@ -26,22 +26,22 @@ export default function MyAccount() {
     setSelectedItem(item);
     console.log(item);
   };
-  function onNameChange(e:) {
+  function onNameChange(e:React.ChangeEvent<HTMLInputElement>) {
     setName(e.target.value);
     console.log(e.target.value);
   }
-  function onRadioChange(e) {
+  function onRadioChange(e:React.ChangeEvent<HTMLInputElement>) {
     setGender(e.target.value);
   }
   const onBirthChange: DatePickerProps["onChange"] = (date, dateString) => {
     console.log(date, dateString);
-    setBirth(dateString);
+    setBirth(dateString as string);
   };
-  function onPhoneNumChange(e) {
+  function onPhoneNumChange(e:React.ChangeEvent<HTMLInputElement>) {
     console.log(e.target.value);
     setPhoneNum(e.target.value);
   }
-  function onEmailChange(e) {
+  function onEmailChange(e:React.ChangeEvent<HTMLInputElement>) {
     setEmail(e.target.value);
   }
 
@@ -56,7 +56,7 @@ export default function MyAccount() {
   useEffect(() => {
     setName(localStorage.getItem("accountName")!);
     setGender(localStorage.getItem("accountGender")!);
-    setBirth(localStorage.getItem("accountbirth"));
+    setBirth(localStorage.getItem("accountbirth")!);
     setEmail(localStorage.getItem("accountEmail")!);
     setPhoneNum(localStorage.getItem("accountPhone")!);
     setCountry(localStorage.getItem("accountCountry")!);
@@ -111,7 +111,7 @@ export default function MyAccount() {
               className="form-item"
               placeholder="Enter your date of birth"
               onChange={onBirthChange}
-              value={dayjs(birth)}
+              value={birth?dayjs(birth):null}
             />
           </Form.Item>
           <Form.Item

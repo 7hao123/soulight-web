@@ -181,14 +181,15 @@ export default function AdvisorDetail() {
               <img src={huangzuan} height={"14px"} alt="" /> Service
             </Flex>
           </Flex>
+          <Link to="/TextReading">
           <div className="triangle">
             <div>
-              <Link to="/TextReading">
-                {" "}
+             
+               
                 <span style={{ color: "#3c2488", fontWeight: "bold" }}>
                   Text Reading
                 </span>
-              </Link>
+         
 
               <p>Delivered within 24h</p>
             </div>
@@ -200,6 +201,8 @@ export default function AdvisorDetail() {
               </Flex>
             </div>
           </div>
+          </Link>
+         
           <div className="triangle">
             <div>
               <span

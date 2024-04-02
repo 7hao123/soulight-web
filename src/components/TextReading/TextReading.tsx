@@ -9,6 +9,7 @@ import wallet from "../../assets/75.svg";
 import Online from "../Online/Online";
 import { useState, useRef, useEffect } from "react";
 import dayjs from "dayjs";
+import rocket from '../../assets/rocket.svg'
 export default function TextReading() {
   const MAX_NAME = 20;
   const MAX_TEXTAREA = 3000;
@@ -27,7 +28,7 @@ export default function TextReading() {
   
   const [base64Image, setBase64Image] = useState('');  
   const [name,setName] = useState('')
-  const [birth,setBirth] = useState('')
+  const [birth,setBirth] = useState(null)
   const [gender,setGender] = useState('')
   const [situation,setSituation] = useState('')
   const [question,setQuestion] =useState('')
@@ -97,7 +98,7 @@ export default function TextReading() {
     // console.log(localStorage.getItem('orderName'));
     // setName('789')
     // console.log(name);
-    
+    console.log(dayjs(null))
 
     setName(localStorage.getItem("orderName")! );
     setGender(localStorage.getItem("orderGender")!);
@@ -109,20 +110,6 @@ export default function TextReading() {
      
   },[])
 
-  // function onfinish(values: any) {
-  //   localStorage.setItem('orderName',values.note)
-  //   const a = dayjs(values.birth).format()
-  //   const b = a.slice(0,a.indexOf('T'))
-  //   console.log(b);
-    
-    
-  //   localStorage.setItem('orderBirth',b)
-  //   localStorage.setItem('orderGender',values.gender)
-  //   localStorage.setItem('orderSituation',values.situation)
-  //   localStorage.setItem('orderQuestion',values.question)
-   
-    
-  // }
 
   
 
@@ -154,8 +141,7 @@ export default function TextReading() {
           </div>
           <div>
             <Form
-              // form={form}
-              // onFinish={onfinish}
+             
               layout="vertical"
               style={{ width: 500, borderRadius: "6px" }}
             >
@@ -183,7 +169,7 @@ export default function TextReading() {
                   className="form-item"
                   placeholder="Enter your date of birth"
                   onChange={onBirthChange}
-                  value={dayjs(birth)}
+                  value={birth?dayjs(birth):null}
                 />
               </Form.Item>
               <Form.Item
@@ -261,7 +247,7 @@ export default function TextReading() {
                   </span>
                 </div>
                 <div className="btn-box">
-                  <button className="btn-grey" onClick={onSubmit}>Speed Up</button>
+                  <button className="btn-grey" onClick={onSubmit}><img src={rocket} height={'20px'} alt="" />Speed Up</button>
                   <span style={{ color: "#a4a4a4", fontWeight: "bold" }}>
                     Delivered within 1h{" "}
                   </span>
