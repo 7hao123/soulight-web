@@ -40,7 +40,7 @@ export default function MySelect({handleSelected,country}) {
     setCategory(items);
   }
 
-  function handleClick(e) {
+  function handleClick(e:React.MouseEvent<HTMLElement>) {
     const str = e.currentTarget.innerText;
 
     const index = str.indexOf("+");
@@ -57,7 +57,7 @@ export default function MySelect({handleSelected,country}) {
   }
 
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);  
-  function handleSelectVisible(e){
+  function handleSelectVisible(){
     setIsDropdownVisible(!isDropdownVisible);
   }
   return (

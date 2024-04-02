@@ -12,7 +12,7 @@ interface PaginationProps {
   onChange?: (e: number) => void;
 }
 const Pagination = (
-  props: PaginationProps = { pageSize: 10, pageNumber: 1, total: 0 }
+  props: PaginationProps = { pageSize: 10, pageNumber: 1, total: 0, }
 ) => {
   const {
     pageSize,
@@ -27,7 +27,7 @@ const Pagination = (
   // const [pageNumber, setPageNumber] = useState(pageNumber); //页面当前编号
   const [paginationTotal, setPaginationTotal] = useState(total); //总数量
   const [totalPageSize, setTotalPageSize] = useState(0); //总页码
-  function handlePage(page){
+  function handlePage(page:number){
     setPageNumber(page)
   }
   useEffect(() => {

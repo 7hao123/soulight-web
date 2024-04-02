@@ -26,7 +26,7 @@ export default function MyAccount() {
     setSelectedItem(item);
     console.log(item);
   };
-  function onNameChange(e) {
+  function onNameChange(e:) {
     setName(e.target.value);
     console.log(e.target.value);
   }
@@ -54,12 +54,12 @@ export default function MyAccount() {
     localStorage.setItem("accountCountry", selectedItem);
   }
   useEffect(() => {
-    setName(localStorage.getItem("accountName"));
-    setGender(localStorage.getItem("accountGender"));
+    setName(localStorage.getItem("accountName")!);
+    setGender(localStorage.getItem("accountGender")!);
     setBirth(localStorage.getItem("accountbirth"));
-    setEmail(localStorage.getItem("accountEmail"));
-    setPhoneNum(localStorage.getItem("accountPhone"));
-    setCountry(localStorage.getItem("accountCountry"));
+    setEmail(localStorage.getItem("accountEmail")!);
+    setPhoneNum(localStorage.getItem("accountPhone")!);
+    setCountry(localStorage.getItem("accountCountry")!);
   }, []);
 
   const activeStyle = { color: "#3d2488", fontWeight: "bold" };
