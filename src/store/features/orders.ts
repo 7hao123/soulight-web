@@ -6,15 +6,15 @@ const initialState = {
 };  
   
 // 定义订单对象的结构  
-const orderFields = {  
-  name: '',  
-  birth: '',  
-  gender: '',  
-  situation: '',  
-  question: '',  
-  time:'',
-  img:''
-};  
+// const orderFields = {  
+//   name: '',  
+//   birth: '',  
+//   gender: '',  
+//   situation: '',  
+//   question: '',  
+//   time:'',
+//   img:''
+// };  
   
 const ordersSlice = createSlice({  
   name: 'orders',  

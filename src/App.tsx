@@ -42,6 +42,8 @@ const listItems: ReactNode[] = items.map((item) => {
 
 const App: React.FC = () => {
   const {value} = useSelector((store)=>store.login)
+  console.log(value);
+  
   
   
   const dispatch = useDispatch()
@@ -67,7 +69,7 @@ const App: React.FC = () => {
               color: "rgb(67, 42, 140)",
             }}
           />
-          {value ? <User /> : <Buttons login={dispatch(loginIn())}  />}
+          {value ? <User /> : <Buttons login={()=>dispatch(loginIn())}  />}
         </div>
       </Header>
 
@@ -75,7 +77,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/MyAccount" element={<MyAccount />} />
-          <Route path="/Advisor/:messageName" element={<AdvisorDetail />} />
+          <Route path="/Advisor/:messageId" element={<AdvisorDetail />} />
           <Route path="/TextReading" element={<TextReading />} />
           <Route path="/MyOrder" element={<MyOrder />} />
           <Route path="/OrderDetail/:messageName" element={<OrderDetail />} />

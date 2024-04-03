@@ -12,12 +12,12 @@ export interface AccountState{
 }
 
 const initialState:AccountState = {
-    accountname:localStorage.getItem("accountName")?localStorage.getItem("accountName"):'',
-    accountbirth:localStorage.getItem("accountbirth")?localStorage.getItem("accountbirth"):'',
-    accountgender: localStorage.getItem("accountGender")?localStorage.getItem("accountGender")     :'',
-    accountemail:localStorage.getItem("accountEmail")?localStorage.getItem("accountEmail"):'',
-    accountphoneNumber:localStorage.getItem("accountPhone")?localStorage.getItem("accountPhone"):'',
-    accountcountry:localStorage.getItem("accountCountry")?localStorage.getItem("accountCountry"):'',
+    accountname:localStorage.getItem("accountName")?localStorage.getItem("accountName")!:'',
+    accountbirth:localStorage.getItem("accountbirth")?localStorage.getItem("accountbirth")!:'',
+    accountgender: localStorage.getItem("accountGender")?localStorage.getItem("accountGender")!    :'',
+    accountemail:localStorage.getItem("accountEmail")?localStorage.getItem("accountEmail")!:'',
+    accountphoneNumber:localStorage.getItem("accountPhone")?localStorage.getItem("accountPhone")!:'',
+    accountcountry:localStorage.getItem("accountCountry")?localStorage.getItem("accountCountry")!:'',
     title:'Account'
 }
 

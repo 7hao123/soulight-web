@@ -11,7 +11,6 @@ export default function User() {
       dispatch(loginOut())
   }
   const {accountname} = useSelector((store)=>store.account)
-  // const name = localStorage.getItem('accountName')
   const content = (
     <Flex vertical>
       <Link to='/MyAccount'>My Account</Link>
