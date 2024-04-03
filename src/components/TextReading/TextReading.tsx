@@ -21,7 +21,8 @@ export default function TextReading() {
     character: "Love expert,97.4% accuracy",
     score: 4.9,
     price: "$9.99",
-    reviews:1987
+    reviews:1987,
+    id:'1'
   };
   
  
@@ -152,7 +153,7 @@ export default function TextReading() {
           style={{ margin: "32px 0 32px 0" }}
           items={[
             { title: <a href="/">Home</a> },
-            {title:<a href={`/Advisor/${message.reviews}`}>{message.name}</a>},
+            {title:<a href={`/Advisor/${message.id}`}>{message.name}</a>},
             { title: "Text Reading" },
           ]}
         ></Breadcrumb>
@@ -270,7 +271,7 @@ export default function TextReading() {
 
               <Flex gap="14px" style={{ marginTop: "16px" }}>
                 <div className="btn-box">
-                  <button className="btn-grey" onClick={onSubmit}>Submit</button>
+                  <button className="btn-grey" onClick={()=>onSubmit()}>Submit</button>
                   <span style={{ color: "#a4a4a4", fontWeight: "bold" }}>
                     Delivered within 24h{" "}
                   </span>
