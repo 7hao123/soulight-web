@@ -124,10 +124,10 @@ export default function MyOrder() {
   
   const currentItems = total>0?messages.slice(startIndex, endIndex):[];
   const messageItems: React.ReactNode[] = currentItems.map((message, index) => (
-    <>
-      <OrderItem key={message.name} message={message} />
+    <div key={message.name}>
+      <OrderItem  message={message} />
       {index < currentItems.length - 1 && <div className="separator"></div>}
-    </>
+    </div>
   ));
   return messages.length>0?(
     <>

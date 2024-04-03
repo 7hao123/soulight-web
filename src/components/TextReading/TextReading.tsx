@@ -82,29 +82,38 @@ export default function TextReading() {
   }
   const dispatch = useDispatch();
   const {orders} = useSelector((store)=>store.order)
+  const {value} = useSelector((store)=>store.login)
+  console.log(value);
   
   function onSubmit(){
 
-    const form = {
-      name,
-      birth,
-      gender,
-      situation,
-      question,  
-      time:'2023-04-01',
-      img:base64Image
+    if(value){
+      const form = {
+        name,
+        birth,
+        gender,
+        situation,
+        question,  
+        time:'2023-04-01',
+        img:base64Image
+      }
+      
+      dispatch(addOrder(form))
+      console.log(orders);
+      
+      // localStorage.setItem('orders',JSON.stringify(orders))
+  
+      localStorage.setItem('orderName',name)
+      localStorage.setItem('orderBirth',birth)
+      localStorage.setItem('orderGender',gender)
+      localStorage.setItem('orderSituation',situation)
+      localStorage.setItem('orderQuestion',question) 
+    }else{
+      alert('请登录')
+    
+      
     }
-    
-    dispatch(addOrder(form))
-    console.log(orders);
-    
-    // localStorage.setItem('orders',JSON.stringify(orders))
-
-    localStorage.setItem('orderName',name)
-    localStorage.setItem('orderBirth',birth)
-    localStorage.setItem('orderGender',gender)
-    localStorage.setItem('orderSituation',situation)
-    localStorage.setItem('orderQuestion',question) 
+   
   }
 
   useEffect(()=>{
